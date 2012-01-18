@@ -13,7 +13,7 @@
 \usepackage{booktabs}
 \usepackage{indentfirst}
 \usepackage{framed,color}
-\usepackage[perpage]{footmisc}
+\usepackage{footnpag}
 \usepackage{array}
 \usepackage[font=small,format=plain,labelfont=bf,up,textfont=it,up]{caption}
 
@@ -36,8 +36,6 @@
 
 \setromanfont[Mapping=tex-text,BoldFont=<%= config['bold'] %>]{<%= config['font'] %>}
 \setmonofont{<%= config['mono'] %>}
-
-
 
 \XeTeXlinebreaklocale{<%= lang %>}
 <%= config['langrule'] %>
@@ -100,6 +98,7 @@
   \addtolength\topmargin{-\footskip}     % this might be wrong!
   \addtolength\topmargin{-.5\topmargin}
   \@settopoint\topmargin
+  %\@addtoreset{footnote}{page}  
 \makeatother
 
 \fancypagestyle{plain}{\fancyhf{}\fancyfoot[LE,RO]{\footnotesize\textbf\thepage}}
@@ -163,13 +162,17 @@
 \tableofcontents\newpage\thispagestyle{empty}
 
 % customize header & footer
+
 \mainmatter
 \fancyhf{}
-\fancyhead[LE]{\color{colorheader}\small\leftmark}
-\fancyhead[RO]{\color{colorheader}\small\rightmark}
-\fancyhead[RE,LO]{\color{colorheader}\small{\savedtitle}}
-\fancyfoot[LE,RO]{\small\textbf\thepage}
+\fancyhead[LE]{\color{colorheader}\quad\small\textbf\thepage\quad\quad\small\leftmark}
+\fancyhead[RO]{\color{colorheader}\small\rightmark\quad\quad\small\textbf\thepage\quad}
+%\fancyhead[RE,LO]{\color{colorheader}\small{\savedtitle}} % book title 
+%\fancyfoot[LE,RO]{\small\textbf\thepage} % page number
+%\fancyfoot[C]{\small\textbf{hello}} % could add release information
+
 %\renewcommand{\headrulewidth}{0.4pt}  % add one line
+%\renewcommand{\headrule}{\color{red}} % conflict with headrulewidth
 \pagestyle{fancy}
 
 <%= latex %>
