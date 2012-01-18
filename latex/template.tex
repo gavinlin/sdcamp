@@ -101,8 +101,11 @@
   %\@addtoreset{footnote}{page}  
 \makeatother
 
-\fancypagestyle{plain}{\fancyhf{}\fancyfoot[LE,RO]{\footnotesize\textbf\thepage}}
+%\fancypagestyle{plain}{\fancyhf{}\fancyfoot[LE,RO]{\footnotesize\textbf\thepage}}
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot{}} % make sure no page number in page of first chapter
+
 \pagestyle{plain}
+
 
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
@@ -137,6 +140,7 @@
 % chapter 
 \makeatletter
 \def\@makechapterhead#1{%
+
   \vspace*{50\p@}%
   {\parindent \z@ \raggedright \normalfont
     \ifnum \c@secnumdepth >\m@ne
@@ -149,7 +153,7 @@
     \interlinepenalty\@M
     \color{colorchapter}\normalfont\Huge\bfseries #1\par\nobreak
     \vskip 40\p@
-  }}
+  }}  
 \makeatother
 
 \linespread{1.3}
