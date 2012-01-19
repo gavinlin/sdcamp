@@ -187,6 +187,9 @@ figures do
 			print "\tMoving output to sdcamp.#{lang}.pdf... "
                         mv("#{dir}/main.pdf", "#$root/sdcamp.#{lang}.pdf")
 			puts "done"
+        else
+            print "\tConvent error, exit !"
+            exit 1
 		end
 	end
 end
