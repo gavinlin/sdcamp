@@ -177,7 +177,7 @@ Git是一个分布式版本控制系统，不应该用以前集中式的版本�
 
 ## 参考 ##
  1. Git权威指南：<http://www.worldhello.net/gotgit/>
- 2. Pro Git: <http://progit.org>
+ 2. Pro Git中文: <http://progit.org/book/zh/>
  3. Git Community Book 中文版 <http://gitbook.liuhui998.com/>
  4. Gerrit <http://code.google.com/p/gerrit/>
  5. Windows版的Git：<http://code.google.com/p/msysgit/>
