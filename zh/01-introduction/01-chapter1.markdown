@@ -47,9 +47,11 @@
 准备好了吗？
 
 ## 如何写作本书的 ##
-本书也是用敏捷的方式来写作的，我在Windows（希望早日能用MBA）用Notepad++编辑器用Markdown的文本文件写内容，然后在共享目录的虚拟机中，一个命令生成所有的其他格式（如PDF、mobi、epub）；Git是我使用的版本控制系统。你可以看看我在图灵写的文章[开源书和开源技术-Markdown篇](http://www.ituring.com.cn/article/828)
+本书也是用敏捷的方式来写作的，我在Windows（希望早日能用MBA）用Notepad++编辑器用Markdown的文本文件写内容，然后在共享目录的虚拟机中，一个命令生成所有的其他格式（如PDF、mobi、epub）；Git是我使用的版本控制系统。
 
 本地测试通过后，我会提交到github中去，同时架设了持续集成服务器，会对我最新内容再次检测，自动产生电子书。
+
+这方面有兴趣的朋友可以继续翻看我在写的小书[跟我学开源技术书](https://github.com/downloads/larrycai/kaiyuanbook/kaiyuanbook.zh.book.pdf)
 
 自从花了一周时间写出第一版后，我就力争持续发布。
 
