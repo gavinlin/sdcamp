@@ -91,10 +91,12 @@ $ git blame # 查看谁改的
 	
 体会每次的变化，就这么简单。
 
-### 分支(Branch)和合并(Merge) ###
-分支和合并在其他大多数的版本控制系统中（如svn，clearcase）都是高级课程，而在Git中，一会儿就学到了。记住，这是一种很常用的工作方式。
+## 分支(Branch)和合并(Merge) ##
+为了不影响团队会产品其他人的开发，常常建立一个分支（Branch）用来开发新功能和修改bug，等完成后，再合并（merge）到主干（master）上供其他人使用。
 
-一个Git仓库可以维护很多开发分支并快速切换。
+分支和合并在其他大多数的版本控制系统中（如svn，clearcase）都是高级课程，而在Git中，一会儿就学到了。记住，在分布式版本控制系统中这而且是一种很常用的工作方式。
+
+一个Git仓库可以维护很多开发分支并`快速`切换，svn中的分支是尽量避免的。
 
 ~~~~~~~~~~~~~ {.bash}
 $ git branch bug123 #创建关于 bug 123的分支
@@ -103,47 +105,102 @@ $ git branch  # 看看有哪些分支，master是主分支。
 * master
 $ git checkout bug123 # 切换到bug123分支。
 Switched to branch 'bug123'
-$ git checkout -b bug234 # 创建并直接切换到bug234分支
+$ git checkout -b feature234 # 创建并直接切换到feature234分支
 ~~~~~~~~~~~~~ 
-	
-### Git使用的良好习惯 ###	
-	
-## 和Git服务器远程连接 ##
-在本地练习的比较久了，该把代码上传到Git服务器了。Git服务器有好几种，企业建议用Gerrit。
 
-先来熟悉各种传输的协议
-
-... 持续码字中，休息一会儿，休息一会儿 ...
- 
-### 几种协议 ###
-
- 1. git clone git@gitserver/repo.git
- 2. git clone ssh://git@gitserver/repo.git
- 3. git clone larrycai@gitserver/repo.git
- 4. git clone ssh://larrycai@gitserver:29418/repo.git
- 5. git clone git://gitserver/repo.git
- 6. git clone https://larrycai@gitserver/repo.git
- 
-  
-### 配置 ssh ###
-
-
-### 克隆 ###
+当需要合并时，切换到需要合并的分支上，如果需要，可以使用kdiff等软件。
 
 ~~~~~~~~~~~~~ {.bash}
-$ git clone 
-~~~~~~~~~~~~~ 
+$ git checkout master # 切换到主分支
+$ git merge bug123 # bug123已解决，合并bug123
+$ git branch -d bug123 # bug123没用了，可以去除。
+~~~~~~~~~~~~~
+		
+## Git里程碑（Tag）##
+一般在发布前，我们需要打一个标记，也叫里程碑（Tag），表明这是一个重要的点，以后可以很方便得把当前的里程碑恢复，省得记录固定的某个commit了。
+
+~~~~~~~~~~~~~ {.bash}
+$ git tag -a v1.0.0 "official release for version 1.0.0" # 创建里程碑并加注释
+$ git tag # 列出所有的里程碑
+$ git checkout v1.0.0 # 以后可以很方便得签出里程碑 v1.0.0
+~~~~~~~~~~~~~
+        
+## 和Git服务器远程连接 ##
+到现在为止，我们一直在本地练习，该把代码上传到Git服务器了。Git服务器有好几种，如Gitolite、Gerrit。企业建议用Gerrit。
+
+Gerrit是基于SSH协议用Java实现的Git服务器，谷歌Android开源项目就是使用Gerrit。
+
+### 在Gerrit中注册 ###
+使用前，需要在Gerrit中注册，首先用正确的账号和密码登陆，然后上传你的SSH公钥。
+
+SSH公钥是要用SSH命令产生的。运行`ssh-keygen`就会在根目录下创建.ssh目录和生成公私密钥文件`id_rsa.pub`，`id_rsa`。
+
+    $ ssh-keygen # 提示输入密码时回车用空密码就可以了！
+
+`id_rsa.pub`就是公钥文件，上传并放在你的Gerrit账户下面。以后Git的相关命令就通过SSH来验证。
+
+### 克隆 （Clone） ###
+从远端Git服务上把代码从远端Git仓库拿到本地的操作就叫克隆（clone），如果一切正确，你就可以顺利执行下面的命令了。
+
+    $ git clone ssh://larrycai@gerritserver.company.com:29418/gameoflife.git
+
+记住你拿到的是完整的Git仓库，只是在本地而已，否者就不是分布式了。可以看看`.git`目录，或者打一下`git log`体会一下。
+
+上面的命令中：
+
+ * `ssh://` 代表了访问的协议，后面的`29418`是SSH协议的通信端口，Gerrit不使用缺省端口`22`。
+ * `larrycai` 是Gerrit中的账号ID，如果和你本地的ID相同可以省略。
+ * `gameoflife.git` 是Git仓库名字，一般习惯以`.git`作为后缀。
 	
-### 与远程服务器相连的Git命令 ###
+### 推送/拉(Push/Pull) ###
+克隆后，你就可以在本地创建分支修改代买，并使用前面学习的命令来用Git命令进行版本控制。
+
+当完成一定的任务，代码修改完毕后，就可以考虑推送（Push）到远程仓库和别人共享。
+
+    $ git push 
+    
+命令格式是： `git push [remote-name] [branch-name]`，缺省是`origin`和`master`。克隆操作会自动使用默认的master和 origin名字。可以看看`.git/config`文件。
+
+同样得，为了同步其他人的最新代码，我们需要经常把最后的内容更新从远程仓库拉（Pull）下来，以此来更新本地仓库。
+
+    $ git pull
+
+命令格式是： `git pull [remote-name] [branch-name]`，缺省也是`origin`和`master`。
+
+## Git使用的良好习惯 ##
+从开始就需要养成良好的使用习惯
+
+### 提交注释的质量 ###
+你的代码写完后是要让人看的，别人看得第一件事是读你提交的注释，因此一定要提高提交的注释，标准的做法[^31]是：
+
+ 1. 第一行是简要介绍。让人明白为什么？而不是你做了什么。
+ 2. 然后一个空白的一行。
+ 3. 用剩下的文本介绍得详细点。
+
+如 [Linux Kernel commit 3db59dd9] ](http://git.kernel.org/?p=linux/kernel/git/stable/linux-stable.git;a=commit;h=3db59dd93309710c40aaf1571c607cb0feef3ecb)：
+
+~~~~~~~~~~~~~ 
+ima: fix cred sparse warning
+
+Fix ima_policy.c sparse "warning: dereference of noderef expression"
+message, by accessing cred->uid using current_cred().
+
+Changelog v1:
+- Change __cred to just cred (based on David Howell's comment)
+~~~~~~~~~~~~~~
+
+如果简单，第2,3项可以省略。 
+
+要记住：**提交的注释能看出背后是否是一个专业的开发者**
 
 ## 常用的几种工作模式 ##
+有好几种Git工作模式可以学习。
 ### 本地特性分支 ###
-## Git的缺点 ##
-相比SVN、Mercurial，Git的学习还是需要花更多的时间，但是掌握基本的命令就可以畅通无阻了。
+经常用本地主分支（master）同步远端仓库，建立本地特性分支进行代码开发，可以同时存在多个分支。
 
-如果你喜欢上了她，你可能会喜欢她的一切，对Git也如此。作为技术人员，看到一些小命令、小技巧，会越来越有兴趣。
+任务完成后，先在本地主分支和远端仓库同步一次，然后再在特性分支和主分支rebase一次，使得本地特性分支是基于最新代码开发的。
 
-所以绕过缺点或喜欢上缺点，就是我的建议。
+然后在切换到主分支，把本地特性分支merge上来，最后push到远端仓库。
 
 ## 代码审阅和Gerrit ##
 
@@ -165,10 +222,33 @@ Gerrit是一个基于 Web 的代码评审和项目管理的工具，面向基于
 
 Gerrit中通过特定分支，任何审核任务的代码变更都能访问，所以如果需要细看或是合并到本地都异常的方便。
 
+## Git的缺点 ##
+相比SVN、Mercurial，Git的学习还是需要花更多的时间，但是掌握基本的命令就可以畅通无阻了。
+
+如果你喜欢上了她，你可能会喜欢她的一切，对Git也如此。作为技术人员，看到一些小命令、小技巧，会越来越有兴趣。
+
+所以绕过缺点或喜欢上缺点，就是我的建议。
+
+## 相关知识 ##
+github、bitbucket、googlecode是非常流行的开源项目托管网站，也都支持Git，建议熟悉一下。
+
+mercurial（hg）也是一个和git相类似的分布式版本控制系统，可以学习一下。
+
+### 几种协议 ###
+先来熟悉各种传输的协议
+
+ 1. git clone git@gitserver/repo.git
+ 2. git clone ssh://git@gitserver/repo.git
+ 3. git clone larrycai@gitserver/repo.git
+ 4. git clone ssh://larrycai@gitserver:29418/repo.git
+ 5. git clone git://gitserver/repo.git
+ 6. git clone https://larrycai@gitserver/repo.git
+
 ## 课后练习 ##
- * 习惯使用Windows版的Git Bash环境
+ * 习惯使用Windows版的Git Bash环境。
  * 继续练习常用的例子，如熟练应用本地分支来开发任务、服务器同步。
- * 尝试给你所在产品代码进行审阅
+ * 尝试用Gerrit给你所在产品代码进行审阅。
+ * 注册Github，并尝试提交本书的补丁。
  
 ## 总结 ##
 Git是一个分布式版本控制系统，不应该用以前集中式的版本控制系统的思路去考虑。要反复练习来熟悉一些基本的用法，慢慢提高使用水平。
@@ -181,4 +261,6 @@ Git是一个分布式版本控制系统，不应该用以前集中式的版本�
  3. Git Community Book 中文版 <http://gitbook.liuhui998.com/>
  4. Gerrit <http://code.google.com/p/gerrit/>
  5. Windows版的Git：<http://code.google.com/p/msysgit/>
+ 
+ [^31] Stackoverflow上的解答 <http://stackoverflow.com/questions/2290016/git-commit-messages-50-72-formatting>
 
