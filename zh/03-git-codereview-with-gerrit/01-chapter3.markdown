@@ -235,14 +235,17 @@ github、bitbucket、googlecode是非常流行的开源项目托管网站，也�
 mercurial（hg）也是一个和git相类似的分布式版本控制系统，可以学习一下。
 
 ### 几种协议 ###
-先来熟悉各种传输的协议
+访问远端仓库，大部分情况下使用SSH协议，实际上Git也可以用其他协议如`git://`和`http://`，这些都是有Git服务器提供的服务
 
- 1. git clone git@gitserver/repo.git
- 2. git clone ssh://git@gitserver/repo.git
- 3. git clone larrycai@gitserver/repo.git
- 4. git clone ssh://larrycai@gitserver:29418/repo.git
- 5. git clone git://gitserver/repo.git
- 6. git clone https://larrycai@gitserver/repo.git
+~~~~~~~~~~~~~~~~ 
+$ git clone ssh://git@gitserver/repo.git # 用git用户访问，常见于gitolite
+$ git clone git@gitserver/repo.git  # 这是ssh协议，和上面一样，ssh://省略了
+$ git clong git@github.com:larrycai/sdcamp.git # ssh协议，用git用户访问，转到larrycai用户，常见于github
+$ git clone larrycai@gitserver/repo.git # ssh协议，直接larrycai用户
+$ git clone ssh://larrycai@gitserver:29418/repo.git # ssh协议，一般是gerrit服务器
+$ git clone git://gitserver/repo.git  # git协议，一般用于克隆只读
+$ git clone https://larrycai@gitserver/repo.git # http协议，大部分情况是为了绕过防火墙
+~~~~~~~~~~~~~~~~~~~
 
 ## 课后练习 ##
  * 习惯使用Windows版的Git Bash环境。
