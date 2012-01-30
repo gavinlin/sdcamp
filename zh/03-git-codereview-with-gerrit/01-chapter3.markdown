@@ -21,7 +21,7 @@ Git最为出色的是它的合并跟踪（merge tracing）能力和强大的社�
 Insert 18333fig0301.png
 图 3-1. 集中式和分布式版本控制
 
-## 基本 Git ##
+## Git基本用法 ##
 Git的学习曲线相对来说还是有点陡的，但只要掌握了基本的一些命令，日常的工作就没有问题了。
 
 ### 安装 ###
@@ -91,7 +91,7 @@ $ git blame # 查看谁改的
 	
 体会每次的变化，就这么简单。
 
-## 分支(Branch)和合并(Merge) ##
+### Git分支（Branch）和合并（Merge） ###
 为了不影响团队会产品其他人的开发，常常建立一个分支（Branch）用来开发新功能和修改bug，等完成后，再合并（merge）到主干（master）上供其他人使用。
 
 分支和合并在其他大多数的版本控制系统中（如svn，clearcase）都是高级课程，而在Git中，一会儿就学到了。记住，在分布式版本控制系统中这而且是一种很常用的工作方式。
@@ -116,8 +116,8 @@ $ git merge bug123 # bug123已解决，合并bug123
 $ git branch -d bug123 # bug123没用了，可以去除。
 ~~~~~~~~~~~~~
 		
-## Git里程碑（Tag）##
-一般在发布前，我们需要打一个标记，也叫里程碑（Tag），表明这是一个重要的点，以后可以很方便得把当前的里程碑恢复，省得记录固定的某个commit了。
+### Git标记（Tag）###
+一般在发布前，我们需要打一个标记（Tag），表明这是一个重要的点，以后可以很方便得把当前的状态恢复，省得记录固定的某个commit了。
 
 ~~~~~~~~~~~~~ {.bash}
 $ git tag -a v1.0.0 "official release for version 1.0.0" # 创建里程碑并加注释
@@ -125,7 +125,7 @@ $ git tag # 列出所有的里程碑
 $ git checkout v1.0.0 # 以后可以很方便得签出里程碑 v1.0.0
 ~~~~~~~~~~~~~
         
-## 和Git服务器远程连接 ##
+## Git远程仓库连接 ##
 到现在为止，我们一直在本地练习，该把代码上传到Git服务器了。Git服务器有好几种，如Gitolite、Gerrit。企业建议用Gerrit。
 
 Gerrit是基于SSH协议用Java实现的Git服务器，谷歌Android开源项目就是使用Gerrit。
@@ -139,7 +139,7 @@ SSH公钥是要用SSH命令产生的。运行`ssh-keygen`就会在根目录下�
 
 `id_rsa.pub`就是公钥文件，上传并放在你的Gerrit账户下面。以后Git的相关命令就通过SSH来验证。
 
-### 克隆 （Clone） ###
+### Git克隆（Clone） ###
 从远端Git服务上把代码从远端Git仓库拿到本地的操作就叫克隆（clone），如果一切正确，你就可以顺利执行下面的命令了。
 
     $ git clone ssh://larrycai@gerritserver.company.com:29418/gameoflife.git
@@ -152,7 +152,7 @@ SSH公钥是要用SSH命令产生的。运行`ssh-keygen`就会在根目录下�
  * `larrycai` 是Gerrit中的账号ID，如果和你本地的ID相同可以省略。
  * `gameoflife.git` 是Git仓库名字，一般习惯以`.git`作为后缀。
 	
-### 推送/拉(Push/Pull) ###
+### Git推送/拉(Push/Pull) ###
 克隆后，你就可以在本地创建分支修改代买，并使用前面学习的命令来用Git命令进行版本控制。
 
 当完成一定的任务，代码修改完毕后，就可以考虑推送（Push）到远程仓库和别人共享。
@@ -167,7 +167,7 @@ SSH公钥是要用SSH命令产生的。运行`ssh-keygen`就会在根目录下�
 
 命令格式是： `git pull [remote-name] [branch-name]`，缺省也是`origin`和`master`。
 
-## Git使用的良好习惯 ##
+## Git的良好使用习惯 ##
 从开始就需要养成良好的使用习惯
 
 ### 提交注释的质量 ###
@@ -177,7 +177,7 @@ SSH公钥是要用SSH命令产生的。运行`ssh-keygen`就会在根目录下�
  2. 然后一个空白的一行。
  3. 用剩下的文本介绍得详细点。
 
-如 [Linux Kernel commit 3db59dd9] ](http://git.kernel.org/?p=linux/kernel/git/stable/linux-stable.git;a=commit;h=3db59dd93309710c40aaf1571c607cb0feef3ecb)：
+如 [Linux Kernel commit 3db59dd9](http://git.kernel.org/?p=linux/kernel/git/stable/linux-stable.git;a=commit;h=3db59dd93309710c40aaf1571c607cb0feef3ecb)：
 
 ~~~~~~~~~~~~~ 
 ima: fix cred sparse warning
@@ -265,5 +265,5 @@ Git是一个分布式版本控制系统，不应该用以前集中式的版本�
  4. Gerrit <http://code.google.com/p/gerrit/>
  5. Windows版的Git：<http://code.google.com/p/msysgit/>
  
- [^31] Stackoverflow上的解答 <http://stackoverflow.com/questions/2290016/git-commit-messages-50-72-formatting>
+[^31]: Stackoverflow上的解答 <http://stackoverflow.com/questions/2290016/git-commit-messages-50-72-formatting>
 

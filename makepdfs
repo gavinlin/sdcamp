@@ -42,4 +42,7 @@ echo
 echo "The generation process will start now."
 ${baseDir}/latex/makepdf $argString
 
-# pdftk A=ebooks/cover.pdf B=sdcamp.zh.pdf cat A1 B2-end output sdcamp.zh.book.pdf 
+# community book
+# pdftk A=ebooks/cover.pdf B=sdcamp.zh.pdf cat A3-4 B2-end output sdcamp.zh.book.pdf 
+# pdftk A=book-cover.pdf B=sdcamp.zh.pdf cat A3-4 B3-end A7 output sdcamp.zh.community.book.pdf
+# pdftk A=book-cover.pdf B=sdcamp.zh.pdf cat A1-2 B3-end output sdcamp.zh.book.pdf
