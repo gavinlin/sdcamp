@@ -1,14 +1,14 @@
 # 项目实践：Game of life #
-如果你自己是在自学，那么请用你自己的项目结合前面学到的东西练习一下，最好和几个同事一起来做。
+如果你是在自学，那么请用你自己的项目结合前面学到的东西练习一下，最好和几个同事一起来做。
 
 如果你参加了公司的培训，这会是紧张和忙碌的一天。
 
 作为团队，你们会收到产品负责人布置的任务，请用学到的东西去实践，记住团队合作！
 
-练习的项目是取之John的[Jenkins指南](http://www.wakaleo.com/books/jenkins-the-definitive-guide)中的演示代码-[生命游戏（game of life）](https://github.com/wakaleo/game-of-life)
+练习的项目是取自John的[Jenkins指南](http://www.wakaleo.com/books/jenkins-the-definitive-guide)中的演示代码-[生命游戏（game of life）](https://github.com/wakaleo/game-of-life)
 
 ## 常见问题 ##
-无论你多么强调团队合作多么的重要，一碰到实际的项目，往往什么都忘了，下面是常见的两个毛病。
+无论你多么强调团队合作的重要性，一碰到实际的项目，往往什么都忘了，下面是常见的两个毛病。
 
 ### 过度承诺（over commit）###
 大部分人觉得任务很简单，一会儿就做完了，可往往一天都没完成，完成的最差[^81]的是0。
