@@ -34,7 +34,7 @@
 
   * 培训房间，网络，老师安排，会议通知，手册打印。
   * Gerrit服务器和Jenkins服务器和tomcat服务器
-  * Game of life Git仓库复原
+  * [生命游戏（game of life）](https://github.com/wakaleo/game-of-life)Git仓库复原
   
 ## 反馈 ##
 作为企业中的一员，学会给别人反馈是第一要务，给这些课提些反馈吧。谢谢。
