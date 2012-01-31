@@ -1,8 +1,8 @@
-\appendix
+\appendices
 
-\renewcommand\chaptername{Appendix}
+\renewcommand{\appendixname}{附录}
 
-# 附录 #
+# 培训安排模板 #
 如果在公司培训，这是一个模板，建议根据实际情况修改。
 
 ## 时间安排 ##
