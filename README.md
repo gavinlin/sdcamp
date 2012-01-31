@@ -23,7 +23,7 @@ Currently it will be released frequently (like quartly)
 
 # How to generate book by yourself #
  
-Please check [BUILD.md](build.md) for how to making ebooks and pdf by yourself, it is reused from [Pro Git](http://github.com/progit/progit) with more detail instruction.
+Please check [BUILD.md](https://github.com/larrycai/sdcamp/blob/master/BUILD.md) for how to making ebooks and pdf by yourself, it is reused from [Pro Git](http://github.com/progit/progit) with more detail instruction.
 
 # License #
 It is licensed under
