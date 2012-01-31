@@ -1,9 +1,3 @@
-\appendices
-
-\renewcommand{\appendixname}{附录}
-\renewcommand{\prechap}{\appendixname}
-\renewcommand{\postchap}{}
-
 # 培训示例模板 #
 如果在公司培训，这是一个模板，建议根据实际情况修改。
 

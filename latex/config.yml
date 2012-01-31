@@ -12,6 +12,7 @@ default:
   con: "Contents"
   fig: "Figure "
   tab: "Table "
+  appendix: "Appendix "
   indent: "\\qquad"
   thanks: "This is the PDF file for the Software Development book contents. It is licensed under the Creative Commons Attribution-Non Commercial-Share Alike 3.0 license. I hope you enjoy it, I hope it helps you learn the software development, and I hope you'll continuously watch this : \\url{http://github.com/larrycai/sdcamp}, will be happy if you follow my weibo \\url{http://weibo.com/larrycaiyu}, and if you want to donate, please visit: \\url{https://me.alipay.com/larrycai}"
 zh:
@@ -43,8 +44,10 @@ zh:
   con: "目录"
   fig: "图 "
   tab: "表 "
+  appendix: "附录 "
   # 首段落空两格字。
   indent: "文文"
+  
 zh-tw:
   langrule: "\\XeTeXlinebreakskip=0em plus 0.1em minus 0.01em\n\\XeTeXlinebreakpenalty=0"
   font: AR PL UMing TW

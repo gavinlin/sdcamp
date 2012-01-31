@@ -74,7 +74,7 @@ def pre_pandoc(string, config)
 	end
 end
 
-def post_pandoc(string, config, lang)
+def post_pandoc(string, config, lang, chapter=true)
 	replace(string) do
 		space = /\s/
 
@@ -121,6 +121,12 @@ def post_pandoc(string, config, lang)
             # hardcode for itemize to use * instead of dot, which is missed in some chinese fonts
             s /(^\\item)/m,'\item[*]'
         end
+        
+        if chapter != true
+            s /^\\chap\{(.*)\}/,'\chapter*{\1}'"\n"'\addcontentsline{toc}{chapter}{\1}'
+            s /^\\section\{(.*)\}/,'\section*{\1}'
+            s /^\\subsection\{(.*)\}/,'\subsection*{\1}'
+        end
 		
 	end
 end
@@ -144,13 +150,37 @@ figures do
 		config = $config['default'].merge($config[lang]) rescue $config['default']
 
 		puts "#{lang}:"
-		markdown = Dir["#$root/#{lang}/*/*.markdown"].sort.map do |file|
+		prefacemarkdown = Dir["#$root/#{lang}/0preface/*.markdown"].sort.map do |file|
 			File.read(file)
 		end.join("\n\n")
 
-		print "\tParsing markdown... "
-		latex = IO.popen('pandoc -p --no-wrap -f markdown -t latex', 'w+') do |pipe|
-			pipe.write(pre_pandoc(markdown, config))
+		print "\tParsing preface markdown... "
+		preface = IO.popen('pandoc -p --no-wrap -f markdown -t latex', 'w+') do |pipe|
+			pipe.write(pre_pandoc(prefacemarkdown, config))
+			pipe.close_write
+			post_pandoc(pipe.read, config, lang, false)
+		end
+        
+        chaptersmarkdown = Dir["#$root/#{lang}/*chapters/*.markdown"].sort.map do |file|
+			File.read(file)
+		end.join("\n\n")
+        puts "done"
+        
+		print "\tParsing main chapters markdown... "
+		chapters = IO.popen('pandoc -p --no-wrap -f markdown -t latex', 'w+') do |pipe|
+			pipe.write(pre_pandoc(chaptersmarkdown, config))
+			pipe.close_write
+			post_pandoc(pipe.read, config, lang)
+		end
+        puts "done"
+        
+        appendixmarkdown = Dir["#$root/#{lang}/*appendix/*.markdown"].sort.map do |file|
+			File.read(file)
+		end.join("\n\n")
+
+		print "\tParsing appendix markdown... "
+		appendix = IO.popen('pandoc -p --no-wrap -f markdown -t latex', 'w+') do |pipe|
+			pipe.write(pre_pandoc(appendixmarkdown, config))
 			pipe.close_write
 			post_pandoc(pipe.read, config, lang)
 		end
@@ -159,6 +189,7 @@ figures do
 		print "\tCreating main.tex for #{lang}... "
 		dir = "#$here/#{lang}"
 		mkdir_p(dir)
+        
 		File.open("#{dir}/main.tex", 'w') do |file|
 			file.write(template.result(binding))
 		end
