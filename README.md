@@ -1,5 +1,6 @@
-# Follow me to Learn Enterprise Agile Software Development #
+# Learn Enterprise Agile Software Development #
 
+## Introduction ##
 This is the source code for the Enterprise Agile Software Development book contents (Chinese). 
 
 You can always download the latest pdf book <https://github.com/downloads/larrycai/sdcamp/sdcamp.zh.community.book.pdf>
@@ -15,10 +16,10 @@ It covers:
  * One day workshop using "game of life"
  * One sample agenda for this training
 
-# Release #
+## Release & History ##
 Currently it will be released frequently (like quartly)
 
- * The next release will be 1.2.0 in 2012.2.14 (55 pages)
+ * The next release will be 1.2.0 in 2012.2.14 (55 pages), see changes [v1.0.0->v1.2.0](https://github.com/larrycai/sdcamp/compare/v1.0.0...HEAD)
  * Current release is 1.0.0 2012.1.12 (40 pages)
 
 # How to generate book by yourself #
