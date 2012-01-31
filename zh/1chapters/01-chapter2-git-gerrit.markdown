@@ -255,7 +255,7 @@ mercurial（hg）也是一个和git相类似的分布式版本控制系统，可
 ~~~~~~~~~~~~~~~~ 
 $ git clone ssh://git@gitserver/repo.git # 用git用户访问，常见于gitolite
 $ git clone git@gitserver/repo.git  # 这是ssh协议，和上面一样，ssh://省略了
-$ git clong git@github.com:larrycai/sdcamp.git # ssh协议，用git用户访问，转到larrycai用户，常见于github
+$ git clone git@github.com:larrycai/sdcamp.git # ssh协议，用git用户访问，转到larrycai用户，常见于github
 $ git clone larrycai@gitserver/repo.git # ssh协议，直接larrycai用户
 $ git clone ssh://larrycai@gitserver:29418/repo.git # ssh协议，一般是gerrit服务器
 $ git clone git://gitserver/repo.git  # git协议，一般用于克隆只读
