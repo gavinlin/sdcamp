@@ -30,7 +30,7 @@ Git的学习曲线相对来说还是有点陡的，但只要掌握了基本的�
 ### 安装 ###
 先装好Windows版的Git(["Git for windows"](http://code.google.com/p/msysgit/downloads/list?can=3&q=official+Git))，很多人老是说装msysgit，实际上我们要的只是Git的工作环境，而msysgit是一个含有整套源码环境的系统（如C编译器）完整包，除非你是个Git极客，否者别自寻麻烦。
 
-缺省安装就可以了，除非你是专家，否者别选Putty的SSH。初学者80%的Git的问题出在ssh连接上。
+缺省安装就可以了，除非你是专家，否者别选Putty的SSH。初学者80%的Git的问题出在SSH连接上。
 
 ### 配置 Git ###
 先要告诉Git你是谁，怎么联系你，这样在代码库中才能找到提交者。界面也可设置成彩色。
