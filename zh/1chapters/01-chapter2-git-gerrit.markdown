@@ -1,5 +1,5 @@
 # 版本控制Git和代码审阅Gerrit #
-如果你还停留在svn阶段，或者从没有玩过Git，那太落伍了。Git是版本控制的一个飞跃，它极大的提高了软件开发的效率。
+如果你还停留在SVN阶段，或者从没有玩过Git，那太落伍了。Git是版本控制的一个飞跃，它极大的提高了软件开发的效率。
 
 代码审阅有好几种方式，走读式效果不佳（有点事后诸葛亮的味道），结对编程（Pair Programming）一直是蛮多人推荐的方式，但真正在企业中实施成功的不是很多，不过还是值得推荐的。
 
@@ -17,12 +17,12 @@ Git的速度很快，这对于诸如Linux kernel这样的大项目来说自然�
 Git最为出色的是它的合并跟踪（merge tracing）能力和强大的社区支持。
 
 ### 集中式和分布式 ###
-企业常用的svn和ClearCase是集中式版本控制系统，服务器架在IT环境中，本地只是签出代码的一个快照。很多操作如历史记录查询都必须要连接到服务器才行。只要依赖网络，就会带来不必要的麻烦，比如在家办公。
+企业常用的SVN和ClearCase是集中式版本控制系统，服务器架在IT环境中，本地只是签出代码的一个快照。很多操作如历史记录查询都必须要连接到服务器才行。只要依赖网络，就会带来不必要的麻烦，比如在家办公。
 
 分布式故名思议就是代码仓库是可以分布在各处的，那么你就可以做很多以前必须要配置管理员参与的事情，如分支。当然它也带来一定的复杂性，早期可能还不太适应。有兴趣的朋友可以看看我在图灵写得文章[企业版本控制的改革：从ClearCase到Git--我的布道之旅](http://www.ituring.com.cn/article/721)。
 
-Insert 18333fig0301.png
-图 3-1. Git分布式版本控制
+Insert 18333fig0201.png
+图 2-1. Git分布式版本控制
 
 ## Git基本用法 ##
 Git的学习曲线相对来说还是有点陡的，但只要掌握了基本的一些命令，日常的工作就没有问题了。
@@ -30,7 +30,7 @@ Git的学习曲线相对来说还是有点陡的，但只要掌握了基本的�
 ### 安装 ###
 先装好Windows版的Git(["Git for windows"](http://code.google.com/p/msysgit/downloads/list?can=3&q=official+Git))，很多人老是说装msysgit，实际上我们要的只是Git的工作环境，而msysgit是一个含有整套源码环境的系统（如C编译器）完整包，除非你是个Git极客，否者别自寻麻烦。
 
-缺省安装就可以了，除非你是专家，否者别选Putty的ssh。初学者80%的Git的问题出在ssh连接上。
+缺省安装就可以了，除非你是专家，否者别选Putty的SSH。初学者80%的Git的问题出在ssh连接上。
 
 ### 配置 Git ###
 先要告诉Git你是谁，怎么联系你，这样在代码库中才能找到提交者。界面也可设置成彩色。
@@ -98,9 +98,9 @@ $ git blame # 查看谁改的
 ### Git分支（Branch）和合并（Merge） ###
 为了不影响团队会产品其他人的开发，常常建立一个分支（Branch）用来开发新功能和修改bug，等完成后，再合并（merge）到主分支（master）上供其他人使用。
 
-分支和合并在其他大多数的版本控制系统中（如svn，clearcase）都是高级课程，而在Git中，一会儿就学到了。记住，在分布式版本控制系统中，这是一种很常用的工作方式。
+分支和合并在其他大多数的版本控制系统中（如SVN，ClearCase）都是高级课程，而在Git中，一会儿就学到了。记住，在分布式版本控制系统中，这是一种很常用的工作方式。
 
-一个Git仓库可以维护很多开发分支并`快速`切换，这是推荐的工作方式，而在svn中，分支是尽量避免的。
+一个Git仓库可以维护很多开发分支并`快速`切换，这是推荐的工作方式，而在SVN中，分支是尽量避免的。
 
 ~~~~~~~~~~~~~ {.bash}
 $ git branch bug123 #创建关于 bug 123的分支
@@ -146,7 +146,7 @@ Gerrit是基于SSH协议用Java实现的Git服务器，谷歌Android开源项目
 ### 在Gerrit中注册 ###
 使用前，需要在Gerrit中注册，首先用正确的账号和密码登陆，然后上传你的SSH公钥。
 
-SSH公钥是要用SSH命令产生的。运行`ssh-keygen`就会在根目录下创建.ssh目录和生成公私密钥文件`id_rsa.pub`，`id_rsa`。
+SSH公钥是要用`ssh`命令产生的。运行`ssh-keygen`就会在根目录下创建`.ssh`目录和生成公私密钥文件`id_rsa.pub`，`id_rsa`。
 
     $ ssh-keygen # 提示输入密码时回车用空密码就可以了！
 
@@ -185,7 +185,7 @@ SSH公钥是要用SSH命令产生的。运行`ssh-keygen`就会在根目录下�
 从一开始就需要养成良好的使用习惯，提交注释（commit message）的质量是一个经常忽略的问题。
 
 ### 提交注释的质量 ###
-你的代码写完后是要让人看的，别人从版本库中查看代码的第一件事是读你提交的注释，因此一定要提高提交的注释，标准的做法[^31]是：
+你的代码写完后是要让人看的，别人从版本库中查看代码的第一件事是读你提交的注释，因此一定要提高提交的注释，标准的做法[^21]是：
 
  1. 第一行是简要介绍。让人明白为什么？而不是你做了什么。
  2. 接着一个空白的一行。
@@ -221,15 +221,15 @@ Changelog v1:
 
 代码审阅是一个不错的敏捷开发实践，让人非常头疼的是实施。大企业中通常是制定出一大堆相关的规范和流程来指导代码审阅。谷歌的 Android 系统是现在非常热门的开源项目，它的代码审阅（包括贡献者的代码）使用的是Gerrit，非常棒的东西，在自己的企业中架设起来也非常方便。
 
-Insert 18333fig0302.png
-图 3-2. Gerrit代码审阅系统
+Insert 18333fig0202.png
+图 2-2. Gerrit代码审阅系统
 
 Gerrit是一个基于 Web 的代码评审和项目管理的工具，面向基于 Git 版本控制系统的项目，所以如果你没用git，就没法用Gerrit了，接下来看看在Gerrit中怎么实施代码评审的。
 
- * 首先开发者（贡献者）的代码变更通过 git 命令被推送（push）到 gerrit 管理下的 Git 版本库，推送的提交转化为一个一个的代码审核任务
+ * 首先开发者（贡献者）的代码变更通过 git 命令被推送（push）到 Gerrit 管理下的 Git 版本库，推送的提交转化为一个一个的代码审核任务
  * 代码审核者可以通过 Web 界面查看审核任务、代码变更，通过 Web 界面做出通过代码审核（Review）或者拒绝（Reject）等决定。
  * 测试者（一般可以设定为CI服务器执行）可以通过访问来获取代码变更进行相应测试，如果测试通过，就可以把这个评审任务设置为校验通过（Verified）。
- * 最后经过了审核（Review）和校验(Verified) 的代码变更可以通过 gerrit 界面中提交动作合并到版本库的对应分支。
+ * 最后经过了审核（Review）和校验(Verified) 的代码变更可以通过 Gerrit 界面中提交动作合并到版本库的对应分支。
 
 相比代码走读，它的好处在于，审阅动作发生在向主干提交代码前，可以只看变更的部分显得很贴心，网上随时随地审阅起来也很方便，这也是有别于结对编程的一个好处。
 
@@ -245,19 +245,19 @@ Gerrit中通过特定分支，任何审核任务的代码变更都能访问，�
 所以绕过缺点或喜欢上缺点，就是我的建议。
 
 ## 相关知识 ##
-github、bitbucket、googlecode是非常流行的开源项目托管网站，也都支持Git，建议熟悉一下。
+GitHub、BitBucket、GoogleCode是非常流行的开源项目托管网站，也都支持Git，建议熟悉一下。
 
-mercurial（hg）也是一个和git相类似的分布式版本控制系统，可以学习一下。
+Mercurial（hg）也是一个和Git相类似的分布式版本控制系统，可以学习一下。
 
 ### 几种协议 ###
 访问远端仓库，大部分情况下使用SSH协议，实际上Git也可以用其他协议如`git://`和`http://`，这些都是有Git服务器提供的服务
 
 ~~~~~~~~~~~~~~~~ 
 $ git clone ssh://git@gitserver/repo.git # 用git用户访问，常见于gitolite
-$ git clone git@gitserver/repo.git  # 这是ssh协议，和上面一样，ssh://省略了
-$ git clone git@github.com:larrycai/sdcamp.git # ssh协议，用git用户访问，转到larrycai用户，常见于github
+$ git clone git@gitserver/repo.git  # 这是SSH协议，和上面一样，ssh://省略了
+$ git clone git@github.com:larrycai/sdcamp.git # SSH协议，用git用户访问，转到larrycai用户，常见于github
 $ git clone larrycai@gitserver/repo.git # ssh协议，直接larrycai用户
-$ git clone ssh://larrycai@gitserver:29418/repo.git # ssh协议，一般是gerrit服务器
+$ git clone ssh://larrycai@gitserver:29418/repo.git # SSH协议，一般是Gerrit服务器
 $ git clone git://gitserver/repo.git  # git协议，一般用于克隆只读
 $ git clone https://larrycai@gitserver/repo.git # http协议，大部分情况是为了绕过防火墙
 ~~~~~~~~~~~~~~~~~~~
@@ -280,5 +280,5 @@ Git是一个分布式版本控制系统，不应该用以前集中式的版本�
  4. Gerrit <http://code.google.com/p/gerrit/>
  5. Windows版的Git：<http://code.google.com/p/msysgit/>
  
-[^31]: Stackoverflow上的解答 <http://stackoverflow.com/questions/2290016/git-commit-messages-50-72-formatting>
+[^21]: Stackoverflow上的解答 <http://stackoverflow.com/questions/2290016/git-commit-messages-50-72-formatting>
 

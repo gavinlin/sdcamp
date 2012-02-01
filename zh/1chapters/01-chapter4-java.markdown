@@ -17,8 +17,8 @@
 
 在服务器端，Sonar是个非常好用的工具，它把需要的质量信息都归纳起来了。一个产品架设好以后，代码的质量就一目了然了。
 
-Insert 18333fig0501.png 
-图 5-1. Sonar
+Insert 18333fig0401.png 
+图 4-1. Sonar
 
 ## 环境准备 ##
  * Eclipse IDE和相关的插件EcmEmma
@@ -50,8 +50,8 @@ Insert 18333fig0501.png
 ## 代码覆盖率 ##
 有了单元测试后，就可以来看看代码覆盖率，建议在Eclipse中安装[EclEmma][eclemma]，非常好用。
 
-Insert 18333fig0502.png 
-图 5-2. Eclipse插件EclEmma
+Insert 18333fig0402.png 
+图 4-2. Eclipse插件EclEmma
 
 服务器端不用Sonar的话，cobertura不错。
 
@@ -60,8 +60,8 @@ Insert 18333fig0502.png
 
 不要把重构当成很复杂的东西，大多数是很简单的，在Eclipse中点几下就可以了。
 
-Insert 18333fig0503.png 
-图 5-3. Eclipse中使用Refactor
+Insert 18333fig0403.png 
+图 4-3. Eclipse中使用Refactor
 
 最常见的重构有：
  
@@ -108,7 +108,7 @@ Insert 18333fig0503.png
 
 同时Mock也保证了代码的可测性。
 
-Mock一般都是通过接口（interface）来实现的，有很多Java工具来帮你Mock。老字号的有JMock、EasyMock，现在比较不错的工具[^51]是Mockito、JMockit、PowerMock。后面解决了一些EasyMock不能对复杂方法处理的弱点，特别是静态函数。
+Mock一般都是通过接口（interface）来实现的，有很多Java工具来帮你Mock。老字号的有JMock、EasyMock，现在比较不错的工具[^41]是Mockito、JMockit、PowerMock。后面解决了一些EasyMock不能对复杂方法处理的弱点，特别是静态函数。
 
 记住工具不是主要的，但是好的工具确实是很重要的。
 
@@ -129,4 +129,4 @@ Mock一般都是通过接口（interface）来实现的，有很多Java工具来
  [javasec]:    http://www.oracle.com/technetwork/java/seccodeguide-139067.html
  [eclemma]:    http://www.eclemma.org/
  
-[^51]:  Stackoverflow 上的对这些工具的比较 <http://stackoverflow.com/questions/4105592/comparison-between-mockito-vs-jmockit-why-is-mockito-voted-better-than-jmockit>
+[^41]:  Stackoverflow 上的对这些工具的比较 <http://stackoverflow.com/questions/4105592/comparison-between-mockito-vs-jmockit-why-is-mockito-voted-better-than-jmockit>

@@ -1,8 +1,8 @@
 # 持续集成 #
 
-持续集成是一种软件开发实践，它是Martin Fowler先生提出[^41]的;一个在企业开发中必须的软件实践，谁也不会容忍企业的软件发布是在一个私人机器上完成的。
+持续集成是一种软件开发实践，它是Martin Fowler先生提出[^31]的;一个在企业开发中必须的软件实践，谁也不会容忍企业的软件发布是在一个私人机器上完成的。
 
-在持续集成中，团队成员频繁集成他们的工作成果，一般每人每天至少集成一次，在保证质量的同事也可以多次。每次集成会经过自动构建（包括自动测试）的验证，以尽快发现集成错误。许多团队发现这种方法可以显著减少集成引起的问题，并可以加快团队合作软件开发速度[^42]的。
+在持续集成中，团队成员频繁集成他们的工作成果，一般每人每天至少集成一次，在保证质量的同事也可以多次。每次集成会经过自动构建（包括自动测试）的验证，以尽快发现集成错误。许多团队发现这种方法可以显著减少集成引起的问题，并可以加快团队合作软件开发速度[^32]的。
 
 ## 环境准备 ##
 服务器端准备好 Game of life项目的git仓库，客户端需要:
@@ -22,13 +22,13 @@
  
 如果上述所有操作没有任何错误，没有人工干预，并通过了所有测试，我们才可以认为这是一次成功的构建。
 
-Insert 18333fig0401.png 
-图 4-1. 持续集成流程
+Insert 18333fig0301.png 
+图 3-1. 持续集成流程
 
 ## Maven ##
-Maven是一个Java项目管理工具，就像Make对于c/c++项目。在Java的构建中和它“类似”的是Ant和Buildr。Maven比Ant的好处[^43]是：
+Maven是一个Java项目管理工具，就像Make对于c/c++项目。在Java的构建中和它“类似”的是Ant和Buildr。Maven比Ant的好处[^33]是：
 
- * 依赖包的管理只要写配置文件（`pom.xml`）就可以了，而Ant需要把依赖的3pp的二进制包放在项目里。
+ * 依赖包的管理只要写配置文件（`pom.xml`）就可以了，而Ant需要把第三方依赖的二进制包放在项目里。
  * 定义了标准集合，简单了项目的管理。
 
 Maven主要还包括：
@@ -48,10 +48,10 @@ $ tar -zxvf ~/Desktop/apache-maven-2.2.1-bin.tar.gz
 $ mv apache-maven-2.2.1 maven
 ~~~~~~~~~~~~~	
 	
-在系统中配好环境变量`M2`、`M2_HOME`、`MAVEN_OPTS`、`PATH`，如下图
+在系统中配好环境变量`M2`、`M2_HOME`、`MAVEN_OPTS`、`PATH`，如图3-2:
 
-Insert 18333fig0402.png 
-图 4-2. 系统中配好maven
+Insert 18333fig0302.png 
+图 3-2. 系统中配好maven
 
 别忘了，需要重新打开bash后，配置才会起作用。
 
@@ -61,22 +61,24 @@ Apache Maven 2.2.1 (r801777; 2009-08-07 03:16:01+0800)
 ~~~~~~~~~~~~~
 
 ### Maven仓库管理器：Nexus ###
-不管怎么样，Java的包在编译时还是要下载下来的，在企业中，最方便的是架设一个管理Java的包的服务器。其中最著名的就是Nexus，它会缓存远程仓库的Jar包。如下图 (源: http://today.java.net/article/2010/01/04/maven-repository-managers-enterprise)
+不管怎么样，Java的包在编译时还是要下载下来的，在企业中，最方便的是架设一个管理Java的包的服务器。其中最著名的就是Nexus，它会缓存远程仓库的Jar包。如图3-3 (源: http://today.java.net/article/2010/01/04/maven-repository-managers-enterprise)
 
-Insert 18333fig0403.png 
-图 4-3. Maven仓库管理器
+Insert 18333fig0303.png 
+图 3-3. Maven仓库管理器
 
 对于个人来说，你不需要安装，只要在`~/.m2/settings.xml`配置指向企业使用的Nexus服务器就好了，如
 
 ~~~~~~~~~~~~~ {.xml}
 # ~/.m2/settings.xml
-<mirrors>
+<settings>
+ <mirrors>
   <mirror>
     <id>nexus</id>
     <mirrorOf>*</mirrorOf>
     <url>http://localhost:8081/nexus/content/groups/public</url>
   </mirror>
-</mirrors>
+ </mirrors>
+</settings>
 ~~~~~~~~~~~~~
 	
 ### 第一个maven命令 ###
@@ -102,15 +104,15 @@ $ java -jar ~/Deskop/jenkins.war --httpPort=7080
 启动后就可以在你的浏览器中打开。<http://localhost:7080>，用7080端口只是为了防止可能的8080端口冲突。
 	
 ### 安装Git插件 ###
-Jenkins的强大得益于它的插件系统（已`.hpi`结尾），大部分情况下，你要的插件早在社区存在了。
+Jenkins的强大得益于它的插件系统（以`.hpi`结尾），大部分情况下，你要的插件早在社区存在了。
 
-为了使用Jenkins和Git服务器相连，你要安装Git插件。你可以选择从Jenkins系统中下载Git插件（需要配Proxy），也可以直接把它下载到本地后，拷到`~/.jenkins/plugins`下，别忘了重启Jenkins服务器。这样你就能看到Git选项了。
+为了使用Jenkins和Git服务器相连，你要安装Git插件。你可以选择从Jenkins系统中下载Git插件（如果公司有防火墙的话需要配Proxy），也可以直接把它下载到本地后，拷到`~/.jenkins/plugins`下，别忘了重启Jenkins服务器。这样你就能看到Git选项了。
 
 ### 系统配置Maven ###
 在系统中配置好maven目录，别忘了把自动安装选项去掉。
 
-Insert 18333fig0404.png 
-图 4-4. Jenkins 系统配置Maven
+Insert 18333fig0304.png 
+图 3-4. Jenkins 系统配置Maven
 
 ### 设置构建任务 ###
 新建一个任务`game-of-life`，选择自由风格（freestyle）。
@@ -120,16 +122,16 @@ Insert 18333fig0404.png
   3. 构建：用`Invoke top-level maven targets`构建，填上`clean package`
   4. 构建后操作: `Archive the artifacts`选中后填上`**/target/*.jar,**/target/*.war`
   
-Insert 18333fig0405.png 
-图 4-5. Jenkins game-of-life配置。  
+Insert 18333fig0305.png 
+图 3-5. Jenkins game-of-life配置。  
 
 ## 如何实施持续集成 ##
 首要一步是把服务器架设起来，然后把你的脚本放在任务中自动执行。经常你会发现本地好好的，到了持续集成服务器就不对了。这是很常见的问题，基本上都是环境的影响。不管怎么样，要让团队明白，持续集成服务器构建出来的产品结果才是有效的。
 
 其次持续集成是有团队负责的，要把结果透明化得显示在公共地方（如显示在电视上）。失败了，要养成习惯立马去修复。只要又一次没人修，慢慢得就没人用了。
 
-Insert 18333fig0406.png 
-图 4-6. Jenkins监控显示屏（来自[Extreme Feedback Panel插件](https://wiki.jenkins-ci.org/display/JENKINS/eXtreme+Feedback+Panel+Plugin)）。
+Insert 18333fig0306.png 
+图 3-6. Jenkins监控显示屏（来自[Extreme Feedback Panel插件](https://wiki.jenkins-ci.org/display/JENKINS/eXtreme+Feedback+Panel+Plugin)）。
 
 最后要养成持续提高的工作态度，随着越来越多的东西加入持续集成，速度会变慢、经常出错。要不断的找到薄弱环节（bottleneck），查找相关技术来不断提高。
 
@@ -155,6 +157,6 @@ Insert 18333fig0406.png
  * Repository Management with Nexus : <http://www.sonatype.com/books/nexus-book/reference/index.html>
  * 持续交付：<http://www.continuousdelivery.info/>
  
- [^41]: <http://martinfowler.com/articles/continuousIntegration.html>
- [^42]: <http://www.infoq.com/cn/articles/ci-theory-practice>
+ [^31]: <http://martinfowler.com/articles/continuousIntegration.html>
+ [^32]: <http://www.infoq.com/cn/articles/ci-theory-practice>
  [^43]: 所有的好处坏处都因人而异，请不要计较。

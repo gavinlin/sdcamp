@@ -12,8 +12,8 @@
 ## Cucumber 简介 ##
 Cucumber（英文：黄瓜）(官方网站是<http://cukes.info/>)是一个实例化需求的极佳实现伴侣。它是基于Ruby的开源测试工具，得益于Ruby便于创建和使用DSL的特性，它可以通过自然语言（文本文字）来描述需求（业务层），并通过关键字驱动和正则表达式匹配告诉去做哪些事情（驱动层），在运行自动化测试结束以后，还会给出详细的报告。
 
-Insert 18333fig0701.png
-图 7-1. Cucumber的架构
+Insert 18333fig0601.png
+图 6-1. Cucumber的架构
 
 下面就是一个加法例子的需求描述，Cucumber文件以`.feature`结尾。
 
@@ -48,8 +48,8 @@ Feature: Adding
 ## 安装 ##
 在Windows上，RubyInstaller提供了ruby的环境，下载安装包（如`rubyinstaller-1.9.3-p0.exe`)，运行即可，别忘了把“Ruby放入PATH中”的选项选上。
 
-Insert 18333fig0702.png 
-图 7-2. Windows平台安装Cucumber
+Insert 18333fig0602.png 
+图 6-2. Windows平台安装Cucumber
 
 ~~~~~~~~~~~~~ {.bash}
 $ gem install cucumber # 如果需要配代理，-p http://<proxyserver>:<port>
@@ -158,7 +158,7 @@ calculator/step_definitions/calculator_steps.rb
  2. `step_definitions`存放驱动层的脚本。
  
 ## 继续网上书店的例子 ## 
-Cucumber虽然上是支持多语言包括中文[^71]的，但还是建议关键字用英文来写，以免其他工具的不支持。
+Cucumber虽然上是支持多语言包括中文[^61]的，但还是建议关键字用英文来写，以免其他工具的不支持。
 
 用Cucumber重写的话，下面是一种方案。
 
@@ -243,8 +243,8 @@ $ cucumber --format progress --format html --out=features_report.html
 
 看看HTML的输出，你也可以自己定制你的报告。
 
-Insert 18333fig0703.png
-图 7-3. Cucumber的架构
+Insert 18333fig0603.png
+图 6-3. Cucumber的架构
 
 ## 相关知识 ##
  * [FitNesse](http://fitnesse.org/)也是ATDD中很著名的一种工具，在Cucumber前占有很大的地位。
@@ -269,4 +269,4 @@ Cucumber也只是一种工具，如果不理解实例化需求说明的真正意
  
  [gherkin]: https://github.com/cucumber/cucumber/wiki/Gherkin 
  
- [^71]: 就算中文，也要用UTF-8。
+ [^61]: 就算中文，也建议用UTF-8格式。

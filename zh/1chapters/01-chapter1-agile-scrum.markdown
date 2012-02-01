@@ -15,10 +15,10 @@
 ## 简单历史 ##
 敏捷这个术语早期有人叫轻量级（lightweight）软件过程，来区别于CMM、RUP等重量级软件过程。后来又觉得本质不是轻重的问题，所以又改成敏捷（Agile）。
 
-Insert 18333fig0201.png 
-图 2-1. 敏捷宣言
+Insert 18333fig0101.png 
+图 1-1. 敏捷宣言
 
-敏捷的技术实践在敏捷出现前就出现了，如持续集成，代码共享，结对编程。甚至是那些敏捷流派，如XP、Scrum、FDD都早就有了。只是这些技术先驱们觉得单打独斗太累，因此在一次聚会中一起创建了敏捷宣言[^1]。
+敏捷的技术实践在敏捷出现前就出现了，如持续集成，代码共享，结对编程。甚至是那些敏捷流派，如XP、Scrum、FDD都早就有了。只是这些技术先驱们觉得单打独斗太累，因此在一次聚会中一起创建了敏捷宣言[^11]。
 
 ### 敏捷流派 ###
 从2004年起，敏捷开始展露锋芒，主要原因是恰好互联网企业需要快速开发，快速交付。他们就顺理成章地采用了敏捷的方式。
@@ -32,7 +32,7 @@ Insert 18333fig0201.png
 这里，我们主要以Scrum来讲解敏捷，但千万别以为Scrum就是敏捷。可以阅读相关知识来了解更多的敏捷。
 
 ## Scrum 基本知识 ##
-Scrum[^2]是迭代式增量软件开发过程，也是一种敏捷软件开发的框架，通常用于敏捷软件开发。Scrum在英语的意思是橄榄球里的争球。
+Scrum[^12]是迭代式增量软件开发过程，也是一种敏捷软件开发的框架，通常用于敏捷软件开发。Scrum在英语的意思是橄榄球里的争球。
 
 ### 基本角色 ###
 Scrum是一个包括了一系列实践和预定义角色的过程框架。Scrum中的主要角色包括：
@@ -41,8 +41,8 @@ Scrum是一个包括了一系列实践和预定义角色的过程框架。Scrum�
  2. **产品负责人(PO: Product Owner)**，确定产品的方向和愿景，定义产品发布的内容、优先级及交付时间，为产品负责。
  3. **开发团队(Team)**，一个跨职能的小团队，人数5-9人，团队拥有交付可用软件需要的各种技能。
  
-Insert 18333fig0202.png 
-图 2-2. Scrum框架
+Insert 18333fig0102.png 
+图 1-2. Scrum框架
  
 ### 框架过程 ### 
 在每一个Sprint（两到四周的周期，其长度由开发团队决定）当中，开发团队创建可用的（可以随时推出）软件的一个增量。每一个Sprint所要实现的功能来自**产品待办事项列表（Product Backlog）**。
@@ -64,8 +64,8 @@ Insert 18333fig0202.png
 ### 常用的实践 ###
 管理Scrum过程有很多实施方法，如即时贴(yellow stick)、燃尽图（burndown chart )、白板(whiteboard)。Scrum最大的好处之一是它非常容易学习，而且启动Scrum应用并不需要太多的投入。
 
-Insert 18333fig0203.png 
-图 2-3. 每日例会中的任务白板（图来自《硝烟中的Scrum和XP》一书）
+Insert 18333fig0103.png 
+图 1-3. 每日例会中的任务白板（图来自《硝烟中的Scrum和XP》一书）
 
 ## 相关知识 ##
 敏捷这个范畴很大，在过程这个方面，建议看看XP和Lean、看板等内容。
@@ -87,6 +87,6 @@ Insert 18333fig0203.png
  3. 你的Scrum检查列表：http://www.infoq.com/cn/minibooks/scrum-checklists-cn
  4. What is scrum? http://www.scrumalliance.org/pages/what_is_scrum
  
- [^1]: http://agilemanifesto.org/iso/zhchs/
- [^2]: http://zh.wikipedia.org/wiki/Scrum
+ [^11]: http://agilemanifesto.org/iso/zhchs/
+ [^12]: http://zh.wikipedia.org/wiki/Scrum
  
