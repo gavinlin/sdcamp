@@ -76,16 +76,16 @@
 几天的学习会很有意思，学完后，你会意识到在企业中你再也不可能什么都会，要抛弃单兵独斗的想法，要学会团队合作，更要持续地学习提高。而且要有激情，否则什么都学不到。
 
 ## 如何写作本书的 ##
-本书也是用敏捷的方式来写作的，我在Windows（希望早日能用MBA）用Notepad++编辑器用Markdown的文本文件写内容，然后在共享目录的虚拟机中，一个命令生成所有的其他格式（如PDF、mobi、epub）；Git是我使用的版本控制系统。
+本书也是用敏捷的方式来写作的，我在Windows（希望早日能用MBA）的Notepad++编辑器里用Markdown的文本文件写内容，然后在共享目录的虚拟机中，一个命令生成所有的其他格式（如PDF、mobi、epub）；Git是我使用的版本控制系统。
 
-本地测试通过后，我会提交到github中去，同时架设了持续集成服务器，会对我最新内容再次检测，自动产生电子书。
+本地测试通过后，我会提交到[GitHub](https://github.com/larrycai/sdcamp)中去，同时架设了持续集成服务器，会对我最新内容再次检测，自动产生电子书。
 
-这方面有兴趣的朋友可以继续翻看我在写的小书"跟我学开源技术书“<https://github.com/larrycai/kaiyuanbook>。
+这方面有兴趣的朋友可以继续翻看我在写的小书【跟我学开源技术书】 <https://github.com/larrycai/kaiyuanbook>。
 
 自从花了一周时间写出第一版后，我就力争持续发布，同时我一直在纠结本书的深度和广度。
 
 ### 封面 ###
-因为自己爱好设计排版，就自己DIY了一下，封面是瑞典南部军港[卡尔斯克鲁纳(Karlskrona)](http://karlskrona.se/en/VisitKarlskrona/)市外面斯图尔克岛(Sturkö)的一角，用Windows PowerPoint制作完成。
+因为自己爱好设计排版，就自己DIY了一下，封面是瑞典南部军港[卡尔斯克鲁纳(Karlskrona)](http://karlskrona.se/en/VisitKarlskrona/)市外面斯图尔克岛(Sturko)的一角，用Windows PowerPoint制作完成。
 
 ## 版本变化 ##
 建议你自己查看每个版本的变化，如<https://github.com/larrycai/sdcamp/compare/v1.0.0...v1.1.2>
