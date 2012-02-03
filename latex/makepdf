@@ -123,7 +123,11 @@ def post_pandoc(string, config, lang, chapter=true)
             # \item -> \item[*]
             # solution is provided by Alexis, and it works under ruby 1.9+ only due to bug in 1.8.7
             # http://stackoverflow.com/questions/9115018/regular-expression-using-ruby-string-gsub-method-to-replace-multi-matches
-            s /\\item(?=((?!\\begin{itemize}).)*\\end{itemize})/m, '\\item[*]'
+            if RUBY_VERSION >= "1.9"
+                s /^\\item(?=((?!\\begin\{itemize\}).)*\\end\{itemize\})/m, '\\item[*]'
+            else
+                s /(^\\item)/m,'\item[*]'
+            end
         end
         
         if chapter != true
@@ -205,7 +209,7 @@ figures do
 		cd($root)
 		3.times do |i|
 			print "\t\tPass #{i + 1}... "
-			IO.popen("xelatex -output-directory=\"#{dir}\" \"#{dir}/main.tex\" 2>&1") do |pipe|
+			IO.popen("xelatex -output-directory=\"#{dir}\" \"#{dir}/main.tex\" 2>&1",'r:UTF-16LE:UTF-8') do |pipe|
 				unless $DEBUG
 					if ~ /^!\s/
 						puts "failed with:\n\t\t\t#{$_.strip}"
@@ -225,7 +229,7 @@ figures do
                         mv("#{dir}/main.pdf", "#$root/sdcamp.#{lang}.pdf")
 			puts "done"
         else
-            print "\tConvent error, exit !"
+            print "\tConvert error, exit !\n"
             exit 1
 		end
 	end
