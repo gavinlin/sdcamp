@@ -63,7 +63,8 @@ end
 
 option_parser.parse!
 
-$here = File.expand_path(File.dirname(__FILE__))
+#$here = File.expand_path(File.dirname(__FILE__))
+$here = Dir.getwd
 $root = File.join($here)
 $outDir = File.join($root, 'pdf')
 options[:name] = File.basename(Dir.getwd) unless options[:name]
@@ -199,7 +200,7 @@ unless missing.empty?
 	exit
 end
 
-puts "Will generate pdf for the following languages:"
+puts "Will generate pdf for the following languages using template #{options[:template]}:"
 puts "    #{languages}"
 puts
 
@@ -208,44 +209,53 @@ figures do
 		config = $config['default'].merge($config[lang]) rescue $config['default']
 
 		puts "#{lang}:"
-		prefacemarkdown = Dir["#$root/#{lang}/0preface/*.markdown"].sort.map do |file|
+		puts "\tParsing preface markdown... "        
+		prefacemarkdown = Dir["#$root/#{lang}/*preface/*.markdown"].sort.map do |file|
+            puts "\t =>"+file
 			File.read(file)
 		end.join("\n\n")
 
-		print "\tParsing preface markdown... "
 		preface = IO.popen('pandoc -p --no-wrap -f markdown -t latex', 'w+') do |pipe|
 			pipe.write(pre_pandoc(prefacemarkdown, config))
 			pipe.close_write
 			post_pandoc(pipe.read, config, lang, false)
 		end
         
+   		puts "\n\tParsing main chapters markdown... "
+        found = false
         chaptersmarkdown = Dir["#$root/#{lang}/*chapters/*.markdown"].sort.map do |file|
+            found = true
+            puts "\t =>"+file
 			File.read(file)
 		end.join("\n\n")
-        puts "done"
+        chaptersmarkdown = Dir["#$root/#{lang}/*/*.markdown"].sort.map do |file|
+            puts "\t =>"+file
+			File.read(file)
+		end.join("\n\n") unless found
+        # puts "done"
         
-		print "\tParsing main chapters markdown... "
-		chapters = IO.popen('pandoc -p --no-wrap -f markdown -t latex', 'w+') do |pipe|
+		latex = IO.popen('pandoc -p --no-wrap -f markdown -t latex', 'w+') do |pipe|
 			pipe.write(pre_pandoc(chaptersmarkdown, config))
 			pipe.close_write
 			post_pandoc(pipe.read, config, lang)
 		end
-        puts "done"
+        # puts "done"
         
+		puts "\n\tParsing appendix markdown... "        
         appendixmarkdown = Dir["#$root/#{lang}/*appendix/*.markdown"].sort.map do |file|
+            puts "\t =>"+file        
 			File.read(file)
 		end.join("\n\n")
 
-		print "\tParsing appendix markdown... "
 		appendix = IO.popen('pandoc -p --no-wrap -f markdown -t latex', 'w+') do |pipe|
 			pipe.write(pre_pandoc(appendixmarkdown, config))
 			pipe.close_write
 			post_pandoc(pipe.read, config, lang)
 		end
-		puts "done"
+		#puts "done"
 
-		print "\tCreating main.tex for #{lang}... "
-		dir = "#$root/latex/#{lang}"
+		print "\n\tCreating main.tex for #{lang}... "
+		dir = "latex/#{lang}"
 		mkdir_p(dir)
         
 		File.open("#{dir}/main.tex", 'w') do |file|
