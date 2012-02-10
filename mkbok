@@ -122,6 +122,8 @@ def pre_pandoc(string, config)
 	end
 end
 
+# `
+
 def post_pandoc(string, config, lang, chapter=true)
 	replace(string) do
 		space = /\s/
@@ -186,8 +188,6 @@ def post_pandoc(string, config, lang, chapter=true)
 		
 	end
 end
-
-#` 
 
 $config = YAML.load_file(options[:config])
 template = ERB.new(File.read(options[:template]))
