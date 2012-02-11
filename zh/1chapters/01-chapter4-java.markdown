@@ -118,7 +118,7 @@ Mock一般都是通过接口（interface）来实现的，有很多Java工具来
  3. 用TDD的方式实现一些功能，不要忘了重构和检查覆盖率。
  4. 用JMockit工具来mock。
 
-## 参考 ##
+## 参考阅读 ##
  1. The Principles of OOD : <http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod>
  2. 重构：<http://book.douban.com/subject/4262627/>
  3. 测试驱动的面向对象软件开发：<http://book.douban.com/subject/4910582/>

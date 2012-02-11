@@ -268,12 +268,12 @@ $ git clone https://larrycai@gitserver/repo.git # http协议，大部分情况�
  * 尝试用Gerrit给你所在产品代码进行审阅。
  * 注册Github，并尝试提交本书的补丁。
  
-## 总结 ##
+## 小结 ##
 Git是一个分布式版本控制系统，不应该用以前集中式的版本控制系统的思路去考虑。要反复练习来熟悉一些基本的用法，慢慢提高使用水平。
 
 随着Git的日益普及，网上的资料已经很多，多问多玩。
 
-## 参考 ##
+## 参考阅读 ##
  1. Git权威指南：<http://www.worldhello.net/gotgit/>
  2. Pro Git中文: <http://progit.org/book/zh/>
  3. Git Community Book 中文版 <http://gitbook.liuhui998.com/>

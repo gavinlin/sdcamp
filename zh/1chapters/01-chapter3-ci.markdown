@@ -146,10 +146,10 @@ Insert 18333fig0306.png
  3. 查找构建输出在哪里。
  4. 和其他团队成员一起修改代码，并提交到代码库中，看看变化。
  
-## 总结 ##
+## 小结 ##
 持续集成是敏捷软件开发的重中之重，一定要养成好的习惯。
  
-## 参考 ##
+## 参考阅读 ##
  * Jenkins: The Definitive Guide：<http://www.wakaleo.com/books/jenkins-the-definitive-guide>
  * Maven实战：<http://www.juvenxu.com/mvn-in-action/>
  * 持续集成软件质量改进和风险降低之道: <http://product.dangdang.com/product.aspx?product_id=20098017>

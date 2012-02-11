@@ -78,10 +78,10 @@ Insert 18333fig0103.png
  3. 一个敏捷团队几个人是最适合的，简单阐述想法，记录在Wiki中。
  4. Scrum周期多长是最合适的，简单阐述想法，记录在Wiki中。
  
-## 总结 ##
+## 小结 ##
 敏捷听起来很虚，但是实际上回归了软件开发的本质，关注需求，团队合作，不断进步。
 
-## 参考 ##
+## 参考阅读 ##
  1. 硝烟中的Scrum和XP: http://www.infoq.com/cn/minibooks/scrum-xp-from-the-trenches
  2. 看板和Scrum——相得益彰：http://www.infoq.com/cn/minibooks/kanban-scrum-minibook-cn
  3. 你的Scrum检查列表：http://www.infoq.com/cn/minibooks/scrum-checklists-cn

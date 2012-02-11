@@ -256,11 +256,11 @@ Insert 18333fig0603.png
  2. 了解Gherkin语言的详细内容，如**tag**，并结合Cucumber去执行。
  3. 看看如何能够实施Cucumber，使它能够整合到持续集成中去。
  
-## 总结 ##
+## 小结 ##
 
 Cucumber也只是一种工具，如果不理解实例化需求说明的真正意义，它会被用得很累，好自为之。
 
-## 参考 ##
+## 参考阅读 ##
  1. Book: Specification by example. <http://manning.com/adzic>
  2. Specification by example <http://specificationbyexample.com>
  3. Cucumber <http://cukes.info>

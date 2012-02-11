@@ -185,11 +185,11 @@ Insert 18333fig0502.png
 ## 课后练习 ##
  * 试着把身边最近工作过的一个需求用这种方式体会一下。
 
-## 总结 ##
+## 小结 ##
 
 实例化需求是一种很棒的协作探索需求的好办法，但是要用熟练了还是很有难度得。
 
-## 参考 ##
+## 参考阅读 ##
  1. Book: Specification by example. <http://manning.com/adzic>
  2. Specification by example: <http://specificationbyexample.com>
  3. 精益软件开发: <http://zh.wikipedia.org/zh/%E7%B2%BE%E7%9B%8A%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91>
