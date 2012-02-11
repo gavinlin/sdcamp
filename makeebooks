@@ -1,29 +1,26 @@
 #!/usr/bin/env ruby
 # -*- coding: utf-8 -*-
 # This script convers markdown book to one of the serveral e-book
-# formats supported with calibre (http://calibre-ebook.com)
+# formats supported with pandoc
 #
 # Samples:
 # 	
-# Build e-book for amazon kindle for english and russian languages
-# 	$ make-ebook en ru
+# Build e-book for html for chinese and english languages
+# 	$ makeebooks en ru
 # or
-# 	$ FORMAT=mobi make-ebook en ru
+# 	$ FORMAT=html makeebooks zh en
 #
-# Build e-book in 'epub' format for russian only
-# 	$ FORMAT=epub make-ebook ru
-
-require 'rubygems'
-require 'rdiscount'
-require 'ruby-debug'
+# Build e-book in 'epub' format for Chinese only
+# 	$ FORMAT=epub makeebooks zh
 
 if ARGV.length == 0
   puts "you need to specify at least one language. For example: makeebooks en"
   exit
 end
 
-format = ENV['FORMAT'] || 'mobi'
-puts "using .#{format} (you can change it via FORMAT environment variable. try 'mobi' or 'epub')"
+name = File.basename(Dir.getwd)
+format = ENV['FORMAT'] || 'html'
+puts "using .#{format} (you can change it via FORMAT environment variable. try 'html' or 'epub')"
 
 ARGV.each do |lang|
   puts "convert content for '#{lang}' language"
@@ -34,26 +31,26 @@ ARGV.each do |lang|
     figure_title = 'Figure'
   end
 
-  book_content = %(<html xmlns="http://www.w3.org/1999/xhtml"><head><title>Software Development - Boot Camp</title></head><body>)
   dir = File.expand_path(File.join(File.dirname(__FILE__), lang))
+  book_content = ""
   Dir[File.join(dir, '**', '*.markdown')].sort.each do |input|
     puts "processing #{input}"
     content = File.read(input)
     content.gsub!(/Insert\s+(.*)(\.png)\s*\n?\s*#{figure_title}\s+(.*)/, '![\3](figures/\1-tn\2 "\3")')
-    book_content << RDiscount.new(content).to_html
+    book_content << content
   end
-  book_content << "</body></html>"
 
-  File.open("sdcamp.#{lang}.html", 'w') do |output|
+  File.open("#{name}.#{lang}.markdown", 'w') do |output|
     output.write(book_content)
   end
-
-  system('ebook-convert', "sdcamp.#{lang}.html", "sdcamp.#{lang}.#{format}",
-         '--cover', 'ebooks/cover.png',
-         '--authors', 'Larry Cai',
-         '--comments', "licensed under the Creative Commons Attribution-Non Commercial-Share Alike 3.0 license",
-         '--level1-toc', '//h:h1', 
-         '--level2-toc', '//h:h2', 
-         '--level3-toc', '//h:h3',
-         '--language', lang)
+  # pandoc -S -s --epub-metadata=metadata.xml -o sdcamp.zh.html --epub-stylesheet=epub/ProGit.css epub/title.txt sdcamp.zh.markdown 
+  system('pandoc',
+       '--standalone', 
+       '--table-of-contents',
+       '--epub-metadata', 'epub/metadata.xml',
+       '--epub-stylesheet', 'epub/book.css', # this doesn't work 
+       '--output', "#{name}.#{lang}.#{format}",
+       "title.#{lang}.txt", # little strange, if this put under epub, pandoc reports error
+       "#{name}.#{lang}.markdown")
+  # pandoc -S --epub-metadata=metadata.xml -o progit.epub title.txt
 end
