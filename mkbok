@@ -286,8 +286,6 @@ def generate_pdf(options)
                                 puts "failed with:\n\t\t\t#{line.strip}"
                                 puts "\tConsider running this again with --debug."
                                 abort = true
-                            else
-                                print line
                             end
                         end
 
