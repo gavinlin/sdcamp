@@ -1,5 +1,5 @@
 # 版本变化 #
-下面是每次的版本变化清单，你也可以自己在Github上查看：<https://github.com/larrycai/sdcamp/compare/v1.0.0...v1.1.2>
+下面是每次的版本变化清单，你也可以自己在Github上查看：<https://github.com/larrycai/sdcamp/compare/v1.0.0...v1.2.0>
 
 ### 2012年2月14日-1.2.0 ###
 一个比较完备的发行版，60页左右。
