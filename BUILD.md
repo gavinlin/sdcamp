@@ -1,15 +1,15 @@
-# Introduction #
+## Introduction ##
 
 As open source books, ebooks and pdf format should be created on fly, the following sections describe those solution in detail.
 
 The solution below is based on [Pro Git][progit]; while it is little updated on format inside. 
 
-# Making Pdf books #
+## Making Pdf books ##
 PDF format is used to read/print in nice way like real book, [pandoc][pandoc] good at this and it is used instead to generate latex from markdown, and latex tool `xelatex` (is part of [TexLive][texlive] now) is used to convert pdf from latex.
 
 Please check [ctax](http://www.ctan.org/) and [TexLive][texlive] for more background for latex, which is quite complicated and elegant if you have never touched before.
 
-## Ubuntu Platform ##
+### Ubuntu Platform ###
 
 Ubuntu Platform Oneiric (11.10) is used mainly due to pandoc. 
 
@@ -36,7 +36,7 @@ Just remind you, some [extra pandoc markdown format](http://johnmacfarlane.net/p
   * code syntax highlight (doesn't work in pdf, while it should work in html/epub which needed later)
   * footnote
     
-# Making Ebooks #
+## Making Ebooks ##
 
 I start to use pandoc for epub and html as well, since from 1.8.x, pandoc supports them as well.
 
@@ -45,7 +45,13 @@ You can simple run the command below to generate related ebooks
     $ ./makeebooks zh  # default for html
 	$ FORMAT=epub ./makeebooks zh  # for epub
     
-# Handle PDF #
+### Cover ###
+
+In pandoc 1.8, the cover is not supported for epub, calibre is used to change it manually.
+    
+## Handle PDF ##
+
+When cover and other pdf pages are changed using pdftk, the bookmark is lost, extra tool is used to fix this. 
 
 ~~~~~~~~~~~~~ {.bash}
 pdftk sdcamp.zh.pdf dump_data > in.info
