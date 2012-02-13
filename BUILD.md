@@ -44,6 +44,15 @@ You can simple run the command below to generate related ebooks
 
     $ ./makeebooks zh  # default for html
 	$ FORMAT=epub ./makeebooks zh  # for epub
+    
+# Handle PDF #
+
+~~~~~~~~~~~~~ {.bash}
+pdftk sdcamp.zh.pdf dump_data > in.info
+pdfbokmark.rb --input in.info > pdfmarks # may update pdfmarks for broken pages
+pdftk A=book-cover.pdf B=sdcamp.zh.pdf cat A3-4 B3-end A7 output merged.pdf
+gs -dBATCH -dNOPAUSE -sDEVICE=pdfwrite -sOutputFile=sdcamp.zh.community.book.pdf merged.pdf pdfmarks    
+~~~~~~~~~~~~~~~~
 	
 [pandoc]: http://johnmacfarlane.net/pandoc/    
 [progit]: http://github.com/progit/progit 
