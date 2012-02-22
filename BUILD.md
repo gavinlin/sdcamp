@@ -17,7 +17,7 @@ Ubuntu Platform Oneiric (11.10) is used mainly due to pandoc.
 
 Though texlive 2011 can be installed separately, the default one texlive 2009 from Ubuntu repository is good enough so far. 
 
-	$ sudo apt-get install pandoc
+    $ sudo apt-get install pandoc
     $ sudo apt-get install texlive-xetex
     $ sudo apt-get install texlive-latex-recommended # main packages
     $ sudo apt-get install texlive-latex-extra # package titlesec
@@ -44,6 +44,8 @@ You can simple run the command below to generate related ebooks
 
     $ ./makeebooks zh  # default for html
 	$ FORMAT=epub ./makeebooks zh  # for epub
+
+It seems pandoc had limitation on 1.8.x	
     
 ### Cover ###
 
