@@ -21,8 +21,8 @@ after_script:
   - chmod 600 ~/.ssh/id_rsa
   - git clone ssh://mkbok@repo.or.cz/srv/git/mkbok.git
   - cd mkbok
-  - cp ../sdcamp.pdf .
-  - git add sdcamp.pdf
+  - cp ../sdcamp.zh.pdf .
+  - git add sdcamp.zh.pdf
   - git config user.name "Larry Cai"
   - git config user.email "larry.caiyu@gmail.com"
   - git commit -am "add file"
