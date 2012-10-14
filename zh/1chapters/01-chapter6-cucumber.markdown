@@ -17,27 +17,25 @@ Insert 18333fig0601.png
 
 下面就是一个加法例子的需求描述，Cucumber文件以`.feature`结尾。
 
-~~~~~~~~~~~~~ {.cucumber}
-# 加法 adding.feature
-Feature: Adding
-  In order to avoid silly mistakes
-  As a math idiot
-  I want to be told the sum of two numbers
-  
-  Scenario: Add two numbers
-    Given the input "2+2"
-    When the calculator is run
-    Then the output should be "4"
+  # 加法 adding.feature
+  Feature: Adding
+    In order to avoid silly mistakes
+    As a math idiot
+    I want to be told the sum of two numbers
+    
+    Scenario: Add two numbers
+      Given the input "2+2"
+      When the calculator is run
+      Then the output should be "4"
 
-  Scenario Outline: Add two numbers
-    Given the input "<input>"
-    When the calculator is run
-    Then the output should be "<output>"
-    Examples:
-      | input | output |
-      | 2+2 | 4 |
-      | 98+1 | 99 |
-~~~~~~~~~~~~~
+    Scenario Outline: Add two numbers
+      Given the input "<input>"
+      When the calculator is run
+      Then the output should be "<output>"
+      Examples:
+        | input | output |
+        | 2+2 | 4 |
+        | 98+1 | 99 |
 
 这就是业务层，它和上一章最后的例子很像。功能标题后面是它的简要描述，然后是详细的例子。
 
@@ -51,10 +49,8 @@ Feature: Adding
 Insert 18333fig0602.png 
 图 6-2. Windows平台安装Cucumber
 
-~~~~~~~~~~~~~ {.bash}
-$ gem install cucumber # 如果需要配代理，-p http://<proxyserver>:<port>
-$ gem install rspec # cucumber 需要
-~~~~~~~~~~~~~ 
+  $ gem install cucumber # 如果需要配代理，-p http://<proxyserver>:<port>
+  $ gem install rspec # cucumber 需要
     
 ## 运行Cucumber ##
 
@@ -62,39 +58,37 @@ $ gem install rspec # cucumber 需要
 
 feature文件放在`features`目录下，如果cucumber命令后不跟任何东西的话，那么它会执行所有的.feature文件。如果我们只想运行某一个.feature文件，我们可以使用命令 `cucumber features\feature_name`
 
-~~~~~~~~~~~~~ {.bash}
-$ cucumber features/adding.feature
-Feature: Adding
-  In order to avoid silly mistakes
-  As a math idiot
-  I want to be told the sum of two numbers
+  $ cucumber features/adding.feature
+  Feature: Adding
+    In order to avoid silly mistakes
+    As a math idiot
+    I want to be told the sum of two numbers
 
-  Scenario: Add two numbers       # features\adding.feature:3
-    Given the input "2+2"         # features\adding.feature:4
-    When the calculator is run    # features\adding.feature:5
-    Then the output should be "4" # features\adding.feature:6
+    Scenario: Add two numbers       # features\adding.feature:3
+      Given the input "2+2"         # features\adding.feature:4
+      When the calculator is run    # features\adding.feature:5
+      Then the output should be "4" # features\adding.feature:6
 
-  Scenario Outline: Add two numbers      # features\adding.feature:8
-    Given the input "<input>"            # features\adding.feature:9
-    When the calculator is run           # features\adding.feature:10
-    Then the output should be "<output>" # features\adding.feature:11
+    Scenario Outline: Add two numbers      # features\adding.feature:8
+      Given the input "<input>"            # features\adding.feature:9
+      When the calculator is run           # features\adding.feature:10
+      Then the output should be "<output>" # features\adding.feature:11
 
-    Examples:
-      | input | output |
-      | 2+2   | 4      |
-      | 98+1  | 99     |
+      Examples:
+        | input | output |
+        | 2+2   | 4      |
+        | 98+1  | 99     |
 
-3 scenarios (3 undefined)
-9 steps (9 undefined)
-0m0.046s
+  3 scenarios (3 undefined)
+  9 steps (9 undefined)
+  0m0.046s
 
-You can implement step definitions for undefined steps with these snippets:
+  You can implement step definitions for undefined steps with these snippets:
 
-Given /^the input "([^"]*)"$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
-end
-...
-~~~~~~~~~~~~~
+  Given /^the input "([^"]*)"$/ do |arg1|
+    pending # express the regexp above with the code you wish you had
+  end
+  ...
 
 你就可以看到它被正常执行了，发现了3个场景（scenarios），9个步骤（steps），这不就是我们需要的测试吗！！
 
@@ -122,37 +116,31 @@ Cucumber的驱动层可以用Ruby，Java和其他语言来支持，很多时候�
 
 在Cucumber中，第一次运行后，它会给出Ruby代码的模板，就是：
 
-~~~~~~~~~~~~~ {.cucumber}
-Given /^the input "([^"]*)"$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
-end
-...
-~~~~~~~~~~~~~
+  Given /^the input "([^"]*)"$/ do |arg1|
+    pending # express the regexp above with the code you wish you had
+  end
+  ...
 
 如果对脚本或Linux比较了解的话，很容易看出，这是一个正则表达式。
 
 在`features`下面建一个`step_definitions`目录，把上面运行的代码模板片段写入`calculator_steps.rb`文件中，并且把`pending`那一行用`#`注释掉，再次运行`cucumber`，就很顺利通过了。
 
-~~~~~~~~~~~~~ {.cucumber}
-3 scenarios (3 passed)
-9 steps (9 passed)
-~~~~~~~~~~~~~
+  3 scenarios (3 passed)
+  9 steps (9 passed)
 
 真实情况下，我们要写些代码匹配到关键字处理后，想办法传递到被测的系统，并和设定的期望值匹配来确定测试结果。
 
 ## 常用的目录结构 ##
 常用的目录结构组织方式是
 
-~~~~~~~~~~~~~ {.bash}
-$ find calculator
-calculator/
-calculator/feature.html
-calculator/features
-calculator/features/adding.feature
-calculator/features/division.feature
-calculator/step_definitions
-calculator/step_definitions/calculator_steps.rb
-~~~~~~~~~~~~~
+  $ find calculator
+  calculator/
+  calculator/feature.html
+  calculator/features
+  calculator/features/adding.feature
+  calculator/features/division.feature
+  calculator/step_definitions
+  calculator/step_definitions/calculator_steps.rb
 
  1. `features`下面按功能放置各个业务。
  2. `step_definitions`存放驱动层的脚本。
@@ -162,58 +150,52 @@ Cucumber虽然上是支持多语言包括中文[^61]的，但还是建议关键�
 
 用Cucumber重写的话，下面是一种方案。
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~ {.cucumber}
-# book.feature
-Feature: 买书免运费
-  提供读者(不管普通还是VIP客户）买书优惠活动，
-  买书超过（含）6本以上的，可以免费送货到除西藏省，青海省的大陆地区。
-  Scenario Outline: 
-    Given 一个客户买了 <几本书>
-    And 买了 <其他类别> 的东西
-    When 选好 <送货地址>
-    Then 看见 <运费为0>
-    
-    Examples:
-    | 几本书| 其他类别 | 送货地址 | 运费为0 |
-    |  6    | n/a      | 上海     |  yes    |
-    |  6    | n/a      | 西藏     |  no     |
-    |  5    | n/a      | 上海     |  no     |
-    |  6    |          | 上海     |  no     |
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  # book.feature
+  Feature: 买书免运费
+    提供读者(不管普通还是VIP客户）买书优惠活动，
+    买书超过（含）6本以上的，可以免费送货到除西藏省，青海省的大陆地区。
+    Scenario Outline: 
+      Given 一个客户买了 <几本书>
+      And 买了 <其他类别> 的东西
+      When 选好 <送货地址>
+      Then 看见 <运费为0>
+      
+      Examples:
+      | 几本书| 其他类别 | 送货地址 | 运费为0 |
+      |  6    | n/a      | 上海     |  yes    |
+      |  6    | n/a      | 西藏     |  no     |
+      |  5    | n/a      | 上海     |  no     |
+      |  6    |          | 上海     |  no     |
 
 它对应的用Ruby实现的驱动层的代码就可以类似：
 
-~~~~~~~~~~~~~~~~~~ {.ruby}
-def onlinebookstore(book_number,other_order_category,delivery_address)
-	# 写代码发往被测系统，得到运费
-    return 10 #模拟运费10元
-end
-Given /^一个客户买了 (\d+)$/ do |number|
-  @book_number = number
-end
-Given /^买了(.*) 的东西$/ do |category|
-  @order_category = category
-end
-When /^选好 (.*)$/ do |address|
-  @delivery_address = address
-  @result = onlinebookstore(@book_number, @order_category,@delivery_address)
-end
-Then /^看见 (yes|no)$/ do |expected_output|
-  if(expected_output == 'yes')
-    @result.should == 0
-  else
-    @result.should == 1
+  def onlinebookstore(book_number,other_order_category,delivery_address)
+  	# 写代码发往被测系统，得到运费
+      return 10 #模拟运费10元
   end
-end    
-~~~~~~~~~~~~~~~~~~ 
+  Given /^一个客户买了 (\d+)$/ do |number|
+    @book_number = number
+  end
+  Given /^买了(.*) 的东西$/ do |category|
+    @order_category = category
+  end
+  When /^选好 (.*)$/ do |address|
+    @delivery_address = address
+    @result = onlinebookstore(@book_number, @order_category,@delivery_address)
+  end
+  Then /^看见 (yes|no)$/ do |expected_output|
+    if(expected_output == 'yes')
+      @result.should == 0
+    else
+      @result.should == 1
+    end
+  end    
 
 所以运行后，你应该能够从输出结果中看到3个Scenario测试通过了。
 
-~~~~~~~~~~~~~~~~~~~ {.cucumber}
-4 scenarios (1 failed, 3 passed)
-16 steps (1 failed, 15 passed)
-0m0.076s
-~~~~~~~~~~~~~~~~~~~
+  4 scenarios (1 failed, 3 passed)
+  16 steps (1 failed, 15 passed)
+  0m0.076s
 
 如果你上过TDD了，就知道现在我演示的只是模拟的实现，现在就是驱动你把驱动层的代码写好使他被运行通过。
 
@@ -237,9 +219,7 @@ end
 
 另外把结果变成网页或者贴在墙上都是不错的建议，试试下面的命令吧？
 
-~~~~~~~~~~~~~~ {.bash}
-$ cucumber --format progress --format html --out=features_report.html
-~~~~~~~~~~~~~~~~~~~
+  $ cucumber --format progress --format html --out=features_report.html
 
 看看HTML的输出，你也可以自己定制你的报告。
 

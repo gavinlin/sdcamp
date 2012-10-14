@@ -36,63 +36,53 @@ Git的学习曲线相对来说还是有点陡的，但只要掌握了基本的�
 ### 配置 Git ###
 首先要告诉Git你是谁，怎么联系你，这样在代码库中才能找到提交者；同时界面也可设置成彩色来方便阅读。在SHELL环境下进行如下全局配置：
 
-~~~~~~~~~~~~~ {.bash}
-$ git config --global user.name "Your name"  
-$ git config --global user.email "Your email address"
-$ git config --global color.ui auto
-~~~~~~~~~~~~~~
+	$ git config --global user.name "Your name"  
+	$ git config --global user.email "Your email address"
+	$ git config --global color.ui auto
 
 `--global`就是把全局配置放在你的HOME下 `~/.gitconfig`，下面两条命令都可看到全局定义。
 
-~~~~~~~~~~~~~ {.bash}
-$ less ~/.gitconfig	
-$ git config -l --global
-~~~~~~~~~~~~~ 
+	$ less ~/.gitconfig	
+	$ git config -l --global
 	
 ### 建立本地 Git 仓库 ###
 既然是分布式，就可以直接在本地创建Git仓库了。先生成一个干净目录`helloworld`并初始化成Git仓库。
 
-~~~~~~~~~~~~~ {.bash}
-$ cd ~
-$ mkdir helloworld
-$ cd helloworld
-$ git init   # 初始化本地仓库
-Initialized empty Git repository in c:/Users/larrycai/helloworld/.git/
-~~~~~~~~~~~~~~~~~~
+	$ cd ~
+	$ mkdir helloworld
+	$ cd helloworld
+	$ git init   # 初始化本地仓库
+	Initialized empty Git repository in c:/Users/larrycai/helloworld/.git/
 	
 养成习惯经常看看目录下有什么变化了。
 
-~~~~~~~~~~~~~ {.bash}
-$ find .
-.
-./.git
-./.git/config
-./.git/hooks
-...
-./.git/hooks/update.sample
-./.git/info
-./.git/objects
-./.git/refs
-./.git/refs/heads
-./.git/refs/tags
-~~~~~~~~~~~~~~~~~~~
+	$ find .
+	.
+	./.git
+	./.git/config
+	./.git/hooks
+	...
+	./.git/hooks/update.sample
+	./.git/info
+	./.git/objects
+	./.git/refs
+	./.git/refs/heads
+	./.git/refs/tags
 	
 你会发现新建了`.git`目录，在下面还有很多东西，自己瞅瞅，琢磨琢磨，这也是平时自我提高的一个办法。不管怎样，这就是你的本地Git仓库了。
 
 ### 第一个提交 ###
 然后可以试着加入一些代码并签入本地版本库。
 
-~~~~~~~~~~~~~ {.bash}
-$ cat "Hello Git World" > README # 建一个空文件
-$ git status # 会发现报告红色的未跟踪的文件
-$ touch README # 创建空文件
-$ git add README # 加入暂存（stage)区
-$ git status & find . # 变绿色，跟踪了。产生一个索引
-$ git commit -am "add first empty file” # 签入代码到本地，要养成好习惯写好提交的注释。
-$ git status & find . # 干净了，索引变化了。
-$ git log
-$ git blame # 查看谁改的
-~~~~~~~~~~~~~
+	$ cat "Hello Git World" > README # 建一个空文件
+	$ git status # 会发现报告红色的未跟踪的文件
+	$ touch README # 创建空文件
+	$ git add README # 加入暂存（stage)区
+	$ git status & find . # 变绿色，跟踪了。产生一个索引
+	$ git commit -am "add first empty file” # 签入代码到本地，要养成好习惯写好提交的注释。
+	$ git status & find . # 干净了，索引变化了。
+	$ git log
+	$ git blame # 查看谁改的
 	
 要细心体会每次的变化，就这么简单，也不那么容易。
 
@@ -103,41 +93,33 @@ $ git blame # 查看谁改的
 
 一个Git仓库可以维护很多开发分支并`快速`切换，这是推荐的工作方式，而在SVN中，分支是尽量避免的。
 
-~~~~~~~~~~~~~ {.bash}
-$ git branch bug123 #创建关于 bug 123的分支
-$ git branch  # 看看有哪些分支，master是主分支。
-  bug123
-* master
-$ git checkout bug123 # 切换到bug123分支。
-Switched to branch 'bug123'
-$ git checkout -b feature234 # 创建并直接切换到feature234分支
-~~~~~~~~~~~~~ 
+	$ git branch bug123 #创建关于 bug 123的分支
+	$ git branch  # 看看有哪些分支，master是主分支。
+	  bug123
+	* master
+	$ git checkout bug123 # 切换到bug123分支。
+	Switched to branch 'bug123'
+	$ git checkout -b feature234 # 创建并直接切换到feature234分支
 
 当需要合并时，切换到需要合并的分支上，如果需要，可以使用kdiff等软件。
 
-~~~~~~~~~~~~~ {.bash}
-$ git checkout master # 切换到主分支
-$ git merge bug123 # bug123已解决，合并bug123
-$ git branch -d bug123 # bug123没用了，可以删除这个分支了。
-~~~~~~~~~~~~~
+	$ git checkout master # 切换到主分支
+	$ git merge bug123 # bug123已解决，合并bug123
+	$ git branch -d bug123 # bug123没用了，可以删除这个分支了。
 
 ### Git变基（Rebase）###
 在两个分支之间同步的操作除了合并，还有一个类似的命令叫变基（rebase）。它就是把你的分支重新更新到新的基础之上。
 
-~~~~~~~~~~~~~ {.bash}
-$ git checkout master 
-$ git checkout -b bug123 # 从主分支工作在bug123分支上
-$ git rebase master # 变基到最新的主分支的内容，继续修改bug123
-~~~~~~~~~~~~~
+	$ git checkout master 
+	$ git checkout -b bug123 # 从主分支工作在bug123分支上
+	$ git rebase master # 变基到最新的主分支的内容，继续修改bug123
 		
 ### Git标记（Tag）###
 一般在发布前，我们需要打一个标记（Tag），表明这是一个重要的点，以后可以很方便地把当前的状态恢复，省得记录某个固定的签入了。
 
-~~~~~~~~~~~~~ {.bash}
-$ git tag -a v1.0.0 -m "official release for version 1.0.0" # 创建里程碑并加注释
-$ git tag # 列出所有的里程碑
-$ git checkout v1.0.0 # 以后可以很方便地签出里程碑 v1.0.0
-~~~~~~~~~~~~~
+	$ git tag -a v1.0.0 -m "official release for version 1.0.0" # 创建里程碑并加注释
+	$ git tag # 列出所有的里程碑
+	$ git checkout v1.0.0 # 以后可以很方便地签出里程碑 v1.0.0
         
 ## Git远程仓库连接 ##
 到现在为止，我们一直在本地练习，该把代码上传到Git服务器了。Git服务器有好几种，如Gitolite、Gerrit。企业建议用Gerrit。
