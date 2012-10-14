@@ -16,3 +16,14 @@ script: which mkbok ; mkbok --lang zh --build pdf
 
 after_script:
   - ls -al *.pdf
+  - mkdir ~/.ssh
+  - cp id_rsa_mkbok ~/.ssh/id_rsa
+  - chmod 600 ~/.ssh/id_rsa
+  - git clone ssh://mkbok@repo.or.cz/srv/git/mkbok.git
+  - cd mkbok
+  - cp ../sdcamp.pdf .
+  - git add sdcamp.pdf
+  - git config user.name "Larry Cai"
+  - git config user.email "larry.caiyu@gmail.com"
+  - git commit -am "add file"
+  - git push origin master
