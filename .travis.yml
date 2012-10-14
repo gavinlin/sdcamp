@@ -17,7 +17,7 @@ after_script:
   - ls ~/.ssh
   - cp id_rsa_mkbok ~/.ssh/id_rsa
   - chmod 600 ~/.ssh/id_rsa
-  - git clone ssh://mkbok@repo.or.cz/srv/git/mkbok.git mkbok.pdf
+  - echo yes | git clone ssh://mkbok@repo.or.cz/srv/git/mkbok.git mkbok.pdf
   - cd mkbok.pdf
   - cp ../sdcamp.zh.pdf .
   - git add sdcamp.zh.pdf
