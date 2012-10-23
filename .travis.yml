@@ -6,15 +6,21 @@ before_script:
   - pandoc -v 
   - sudo apt-get install ttf-arphic-gbsn00lp ttf-arphic-ukai ttf-wqy-microhei ttf-wqy-zenhei
   - sudo apt-get install texlive-xetex texlive-latex-recommended texlive-latex-extra
-  - gem install mkbok
 
 rvm:
   - 1.9.3
-script: which mkbok ; mkbok --lang zh --build pdf
+script: 
+  - chmod +x mkbok
+  - ./mkbok --lang zh --build pdf
 
 after_script:
   - ls -al *.pdf
+  - pdfv1=`git config remote.origin.url`
+  - pdfv2=${pdfv1#*github.com/}
+  - pdfname=${pdfv2%/*}_sdcamp.zh.pdf
+  - echo $pdfv1 $pdfv2 $pdfname
   - ls ~/.ssh
+  - env
   - cp id_rsa_mkbok ~/.ssh/id_rsa
   - chmod 600 ~/.ssh/id_rsa
   - cat ~/.ssh/known_hosts
@@ -22,9 +28,9 @@ after_script:
   - cat ~/.ssh/known_hosts
   - git clone ssh://mkbok@repo.or.cz/srv/git/mkbok.git mkbok.pdf
   - cd mkbok.pdf
-  - cp ../sdcamp.zh.pdf .
-  - git add sdcamp.zh.pdf
+  - cp ../sdcamp.zh.pdf $pdfname
+  - git add $pdfname
   - git config user.name "Larry Cai"
   - git config user.email "larry.caiyu@gmail.com"
-  - git commit -am "add file"
+  - git commit -am "add file in travis-ci"
   - git push origin master
