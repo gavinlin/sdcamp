@@ -15,8 +15,8 @@ script:
 
 env:
   global:
-    - secure: "XSBp8pB7bxeyHXnFe/XB7FrcDfS+ecobgkvBMdWtsp/pj5d6gBoMLD/3A8Nn\nRT3SMHT6dnwFG+qcFX6i1M8SIvZqDgYNop68skvbeKvkCEA4LhUSvogEqH+q\nD4FKgU0WEyFAMHSBF+QiwBxPP8rZZc3ELc7okWxScc7r5kfDKtE="
-
+    - secure: "qkE5/TVKQV/+xBEW5M7ayWMMtFwhu44rQb9zh3n0LH4CkVb+b748lOuW3htc\nXfnXU8aGzOsQBeCJZQstfzsHFPkll+xfhk38cFqNQp7tpMo/AOZIkqd2AIUL\n0bgaFD+1kFAxKTu02m11xzkDNw6FuHMVvoMEQu/fo115i2YmWHo="  
+    
 after_script:
 #  - ls -al *.pdf
 #  - env
@@ -24,5 +24,5 @@ after_script:
 #  - ls -al 
 # change the name to indicate it is snapshot
   - cp sdcamp.zh.pdf sdcamp.zh.snapshot.pdf
-  - git config --global github.upload-script-token $GITHUB_TOKEN
-  - ./github-upload.rb sdcamp.zh.snapshot.pdf
+# - git config --global github.upload-script-token $GITHUB_TOKEN
+  - ./github-upload.rb sdcamp.zh.snapshot.pdf --skip-ssl-verification -t $GITHUB_TOKEN
