@@ -25,4 +25,4 @@ after_script:
 # change the name to indicate it is snapshot
   - cp sdcamp.zh.pdf sdcamp.zh.snapshot.pdf
 # - git config --global github.upload-script-token $GITHUB_TOKEN
-  - ./github-upload.rb sdcamp.zh.snapshot.pdf --skip-ssl-verification -t $GITHUB_TOKEN
+  - ./github-upload.rb sdcamp.zh.snapshot.pdf larrycai/sdcamp --skip-ssl-verification -t $GITHUB_TOKEN
