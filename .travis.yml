@@ -19,7 +19,7 @@ env:
     
 after_script:
 #  - ls -al *.pdf
-#  - env
+  - env
 #  - echo $GITHUB_TOKEN
 #  - ls -al 
 # change the name to indicate it is snapshot
