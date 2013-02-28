@@ -53,6 +53,8 @@ In pandoc 1.8, the cover is not supported for epub, calibre is used to change it
     
 ## Handle PDF ##
 
+Below solution is not used, latex `\includegraphics[scale=0.8]{ebooks/cover.pdf}` is used directly.
+
 When cover and other pdf pages are changed using pdftk, the bookmark is lost, extra tool is used to fix this. 
 
 ~~~~~~~~~~~~~ {.bash}

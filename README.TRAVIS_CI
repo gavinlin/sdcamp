@@ -1,0 +1,14 @@
+# github to get the token
+# https://github.com/wereHamster/ghup
+$ curl -X POST -u larrycai   -d '{"note":"file upload script","scopes":["repo"]
+}'   https://api.github.com/authorizations
+Enter host password for user 'larrycai':
+
+# 
+$ gem install travis
+# update script to use https
+# https://github.com/travis-ci/travis-cli/pull/2/files
+#
+$ travis encrypt larry/sdcamp GITHUB_TOKEN=<token>
+
+# use encrypt environment in .travis-ci.yml
