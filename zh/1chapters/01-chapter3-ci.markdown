@@ -67,16 +67,16 @@ Insert 18333fig0303.png
 对于个人来说，你不需要安装，只要在`~/.m2/settings.xml`配置指向企业使用的Nexus服务器就好了，如
 
 ~~~~~~~~~ {.xml}
-    # ~/.m2/settings.xml
-    <settings>
-     <mirrors>
-      <mirror>
-        <id>nexus</id>
-        <mirrorOf>*</mirrorOf>
-        <url>http://localhost:8081/nexus/content/groups/public</url>
-      </mirror>
-     </mirrors>
-    </settings>
+# ~/.m2/settings.xml
+<settings>
+ <mirrors>
+  <mirror>
+    <id>nexus</id>
+    <mirrorOf>*</mirrorOf>
+    <url>http://localhost:8081/nexus/content/groups/public</url>
+  </mirror>
+ </mirrors>
+</settings>
 ~~~~~~~~~~~~
 	
 ### 第一个maven命令 ###

@@ -36,9 +36,11 @@ Git的学习曲线相对来说还是有点陡的，但只要掌握了基本的�
 ### 配置 Git ###
 首先要告诉Git你是谁，怎么联系你，这样在代码库中才能找到提交者；同时界面也可设置成彩色来方便阅读。在SHELL环境下进行如下全局配置：
 
-	$ git config --global user.name "Your name"  
-	$ git config --global user.email "Your email address"
-	$ git config --global color.ui auto
+~~~~~~~~~~~~~ {.bash}
+$ git config --global user.name "Your name"  
+$ git config --global user.email "Your email address"
+$ git config --global color.ui auto
+~~~~~~~~~~~~~~~~~~	
 
 `--global`就是把全局配置放在你的HOME下 `~/.gitconfig`，下面两条命令都可看到全局定义。
 
@@ -48,11 +50,13 @@ Git的学习曲线相对来说还是有点陡的，但只要掌握了基本的�
 ### 建立本地 Git 仓库 ###
 既然是分布式，就可以直接在本地创建Git仓库了。先生成一个干净目录`helloworld`并初始化成Git仓库。
 
-	$ cd ~
-	$ mkdir helloworld
-	$ cd helloworld
-	$ git init   # 初始化本地仓库
-	Initialized empty Git repository in c:/Users/larrycai/helloworld/.git/
+~~~~~~~~~~~~
+$ cd ~
+$ mkdir helloworld
+$ cd helloworld
+$ git init   # 初始化本地仓库
+Initialized empty Git repository in c:/Users/larrycai/helloworld/.git/
+~~~~~~~~~~~~~
 	
 养成习惯经常看看目录下有什么变化了。
 
@@ -74,16 +78,18 @@ Git的学习曲线相对来说还是有点陡的，但只要掌握了基本的�
 ### 第一个提交 ###
 然后可以试着加入一些代码并签入本地版本库。
 
-	$ cat "Hello Git World" > README # 建一个空文件
-	$ git status # 会发现报告红色的未跟踪的文件
-	$ touch README # 创建空文件
-	$ git add README # 加入暂存（stage)区
-	$ git status & find . # 变绿色，跟踪了。产生一个索引
-	$ git commit -am "add first empty file” # 签入代码到本地，要养成好习惯写好提交的注释。
-	$ git status & find . # 干净了，索引变化了。
-	$ git log
-	$ git blame # 查看谁改的
-	
+~~~~~~~~ {.bash}
+$ cat "Hello Git World" > README # 建一个空文件
+$ git status # 会发现报告红色的未跟踪的文件
+$ touch README # 创建空文件
+$ git add README # 加入暂存（stage)区
+$ git status & find . # 变绿色，跟踪了。产生一个索引
+$ git commit -am "add first empty file” # 签入代码到本地，要养成好习惯写好提交的注释。
+$ git status & find . # 干净了，索引变化了。
+$ git log
+$ git blame # 查看谁改的
+~~~~~~~~~~~~~~~	
+
 要细心体会每次的变化，就这么简单，也不那么容易。
 
 ### Git分支（Branch）和合并（Merge） ###

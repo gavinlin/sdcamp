@@ -125,7 +125,7 @@
 % below for code syntax highlight
 \usepackage{fancyvrb}
 %\DefineShortVerb[commandchars=\\\{\}]{\|}
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\},frame=leftline,fontsize=\small}
 % Add ',fontsize=\small' for more characters per line
 \newenvironment{Shaded}{}{}
 \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
@@ -199,13 +199,10 @@
 
 \linespread{1.3}
 
-\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
-
 \begin{document}
 %\maketitle
-%\begin{titlepage}
+% includes cover directly, pdf is generated from slides (could be word and others)
 \includegraphics[scale=0.8]{ebooks/cover.pdf}
-%\end{titlepage}
 
 \thispagestyle{empty}
 \setcounter{tocdepth}{4}
