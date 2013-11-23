@@ -1,23 +1,26 @@
 before_script:
   - sudo apt-get install libglib2.0-dev
+  - pwd
   - git clone --recursive git://github.com/fletcher/peg-multimarkdown.git
   - cd peg-multimarkdown
   - make
-  - sudo make install
+  - ls
+  - pwd
 # here you can check os environment, it is ubuntu natty  
   - uname -a
   - lsb_release -a
   - sudo apt-get install ttf-arphic-gbsn00lp ttf-arphic-ukai ttf-wqy-microhei ttf-wqy-zenhei
   - sudo apt-get install texlive-xetex texlive-latex-recommended texlive-latex-extra
 
-script: 
+script:
+  - pwd 
   - chmod +x mmd2box
   - ./mmd2box
 
 env:
   global:
     - secure: "qkE5/TVKQV/+xBEW5M7ayWMMtFwhu44rQb9zh3n0LH4CkVb+b748lOuW3htc\nXfnXU8aGzOsQBeCJZQstfzsHFPkll+xfhk38cFqNQp7tpMo/AOZIkqd2AIUL\n0bgaFD+1kFAxKTu02m11xzkDNw6FuHMVvoMEQu/fo115i2YmWHo="  
-    
+
 after_script:
 #  - ls -al *.pdf
   - env
