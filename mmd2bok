@@ -2,6 +2,7 @@
 cd latex
 cp -rf ../template/* .
 cp -rf ../contents/img .
+ls -al img
 multimarkdown -t latex meta.txt ../contents/0-preface*.markdown -o preface.tex
 multimarkdown -t latex meta.txt ../contents/1-chapter*.markdown -o chapters.tex
 multimarkdown -t latex meta.txt ../contents/2-appendix*.markdown -o appendix.tex
