@@ -5,7 +5,7 @@ As open source books, ebooks and pdf format should be created on fly, the follow
 The solution below is based on [Pro Git][progit]; while it is little updated on format inside. 
 
 ## Making Pdf books ##
-PDF format is used to read/print in nice way like real book, [pandoc][pandoc] good at this and it is used instead to generate latex from markdown, and latex tool `xelatex` (is part of [TexLive][texlive] now) is used to convert pdf from latex.
+PDF format is used to read/print in nice way like real book, [MultiMarkdown](http://fletcherpenney.net/multimarkdown/) is good at this and it is used instead to generate latex from multimarkdown, and latex tool `xelatex` (is part of [TexLive][texlive] now) is used to convert pdf from latex.
 
 Please check [ctax](http://www.ctan.org/) and [TexLive][texlive] for more background for latex, which is quite complicated and elegant if you have never touched before.
 
@@ -13,7 +13,7 @@ Please check [ctax](http://www.ctan.org/) and [TexLive][texlive] for more backgr
 
 Ubuntu Platform Precise (12.04) is used mainly and it is continuously verified by travis-ci.org as well. 
 
-[pandoc][pandoc] can be installed directly from source, which version is 1.9.1.1.
+`multimarkdown` shall be compiled from git source.
 
 Though texlive 2011 can be installed separately, the default one texlive 2009 from Ubuntu repository is good enough so far. 
 
@@ -29,41 +29,12 @@ You need to install related fonts for Chinese, fortunately they exist in ubuntu 
 
 Then it should work perfectly
 
-	$ ./mkbok
+	$ ./mmd2bok
+
+### Latex template ###
+
+the latex template is `template/template.tex`, it contains the style and include the `preface`,`chapters`,`appendix` latex files, which are generated from source chapters.
+
+See `mmd2bok` for more information
     
-Just remind you, some [extra pandoc markdown format](http://johnmacfarlane.net/pandoc/README.html) is used inside this book:
-
-  * code syntax highlight (doesn't work in pdf, while it should work in html/epub which needed later)
-  * footnote
-    
-## Making Ebooks ##
-
-I start to use pandoc for epub and html as well, since from 1.8.x, pandoc supports them as well.
-
-You can simple run the command below to generate related ebooks
-
-  $ ./makeebooks zh  # default for html
-  $ FORMAT=epub ./makeebooks zh  # for epub
-
-It seems pandoc had limitation on 1.8.x	
-    
-### Cover ###
-
-In pandoc 1.8, the cover is not supported for epub, calibre is used to change it manually.
-    
-## Handle PDF ##
-
-Below solution is not used, latex `\includegraphics[scale=0.8]{ebooks/cover.pdf}` is used directly.
-
-When cover and other pdf pages are changed using pdftk, the bookmark is lost, extra tool is used to fix this. 
-
-~~~~~~~~~~~~~ {.bash}
-pdftk sdcamp.zh.pdf dump_data > in.info
-pdfbokmark.rb --input in.info > pdfmarks # may update pdfmarks for broken pages
-pdftk A=book-cover.pdf B=sdcamp.zh.pdf cat A3-4 B3-end A7 output merged.pdf
-gs -dBATCH -dNOPAUSE -sDEVICE=pdfwrite -sOutputFile=sdcamp.zh.community.book.pdf merged.pdf pdfmarks    
-~~~~~~~~~~~~~~~~
-	
-[pandoc]: http://johnmacfarlane.net/pandoc/    
-[progit]: http://github.com/progit/progit 
 [texlive]: http://www.tug.org/texlive/
