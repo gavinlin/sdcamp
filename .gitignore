@@ -5,6 +5,7 @@ sdcamp.*.html
 sdcamp.*.markdown
 sdcamp-*.epub
 *.pdf
+!contents/img/cover.pdf
 !ebooks/cover.pdf
 *.swp
 latex/*
