@@ -16,9 +16,9 @@ before_script:
 script:
   - pwd 
   - cp ..
-  - ls
-  - chmod +x mmd2box
-  - ./mmd2box
+  - ls -al
+  - chmod +x mmd2bok
+  - ./mmd2bok
 
 env:
   global:
