@@ -12,30 +12,33 @@
 ## Cucumber 简介 ##
 Cucumber（英文：黄瓜）(官方网站是<http://cukes.info/>)是一个实例化需求的极佳实现伴侣。它是基于Ruby的开源测试工具，得益于Ruby便于创建和使用DSL的特性，它可以通过自然语言（文本文字）来描述需求（业务层），并通过关键字驱动和正则表达式匹配告诉去做哪些事情（驱动层），在运行自动化测试结束以后，还会给出详细的报告。
 
-Insert 18333fig0601.png
-图 6-1. Cucumber的架构
+
+![Cucumber的架构](img/18333fig0601-tn.png)
+
 
 下面就是一个加法例子的需求描述，Cucumber文件以`.feature`结尾。
 
-  # 加法 adding.feature
-  Feature: Adding
-    In order to avoid silly mistakes
-    As a math idiot
-    I want to be told the sum of two numbers
-    
-    Scenario: Add two numbers
-      Given the input "2+2"
-      When the calculator is run
-      Then the output should be "4"
+```
+# 加法 adding.feature
+Feature: Adding
+  In order to avoid silly mistakes
+  As a math idiot
+  I want to be told the sum of two numbers
+  
+  Scenario: Add two numbers
+    Given the input "2+2"
+    When the calculator is run
+    Then the output should be "4"
 
-    Scenario Outline: Add two numbers
-      Given the input "<input>"
-      When the calculator is run
-      Then the output should be "<output>"
-      Examples:
-        | input | output |
-        | 2+2 | 4 |
-        | 98+1 | 99 |
+  Scenario Outline: Add two numbers
+    Given the input "<input>"
+    When the calculator is run
+    Then the output should be "<output>"
+    Examples:
+      | input | output |
+      | 2+2 | 4 |
+      | 98+1 | 99 |
+```
 
 这就是业务层，它和上一章最后的例子很像。功能标题后面是它的简要描述，然后是详细的例子。
 
@@ -46,8 +49,7 @@ Insert 18333fig0601.png
 ## 安装 ##
 在Windows上，RubyInstaller提供了ruby的环境，下载安装包（如`rubyinstaller-1.9.3-p0.exe`)，运行即可，别忘了把“Ruby放入PATH中”的选项选上。
 
-Insert 18333fig0602.png 
-图 6-2. Windows平台安装Cucumber
+![Windows平台安装Cucumber](img/18333fig0602-tn.png)
 
   $ gem install cucumber # 如果需要配代理，-p http://<proxyserver>:<port>
   $ gem install rspec # cucumber 需要
@@ -133,14 +135,16 @@ Cucumber的驱动层可以用Ruby，Java和其他语言来支持，很多时候�
 ## 常用的目录结构 ##
 常用的目录结构组织方式是
 
-  $ find calculator
-  calculator/
-  calculator/feature.html
-  calculator/features
-  calculator/features/adding.feature
-  calculator/features/division.feature
-  calculator/step_definitions
-  calculator/step_definitions/calculator_steps.rb
+```bash
+$ find calculator
+calculator/
+calculator/feature.html
+calculator/features
+calculator/features/adding.feature
+calculator/features/division.feature
+calculator/step_definitions
+calculator/step_definitions/calculator_steps.rb
+```
 
  1. `features`下面按功能放置各个业务。
  2. `step_definitions`存放驱动层的脚本。
@@ -169,6 +173,7 @@ Cucumber虽然上是支持多语言包括中文[^61]的，但还是建议关键�
 
 它对应的用Ruby实现的驱动层的代码就可以类似：
 
+```ruby
   def onlinebookstore(book_number,other_order_category,delivery_address)
   	# 写代码发往被测系统，得到运费
       return 10 #模拟运费10元
@@ -190,7 +195,7 @@ Cucumber虽然上是支持多语言包括中文[^61]的，但还是建议关键�
       @result.should == 1
     end
   end    
-
+```
 所以运行后，你应该能够从输出结果中看到3个Scenario测试通过了。
 
   4 scenarios (1 failed, 3 passed)
@@ -202,7 +207,9 @@ Cucumber虽然上是支持多语言包括中文[^61]的，但还是建议关键�
 怎么样，有点感觉了，多多练习吧。
 
 ## 常见问题 ##
+
 ### 我们的系统没有接口能够被这么（或容易）测试得？ ###
+
 好问题！！上面这个网上书店系统
 
  * 可能使用Flash写的，你根本没法用脚本填充数据，然后得到结果。
@@ -223,8 +230,7 @@ Cucumber虽然上是支持多语言包括中文[^61]的，但还是建议关键�
 
 看看HTML的输出，你也可以自己定制你的报告。
 
-Insert 18333fig0603.png
-图 6-3. Cucumber的架构
+![Cucumber的架构](img/18333fig0603-tn.png)
 
 ## 相关知识 ##
  * [FitNesse](http://fitnesse.org/)也是ATDD中很著名的一种工具，在Cucumber前占有很大的地位。
@@ -248,5 +254,4 @@ Cucumber也只是一种工具，如果不理解实例化需求说明的真正意
  5. Book: The Secret Ninja Cucumber Scrolls: <http://cuke4ninja.com/>
  
  [gherkin]: https://github.com/cucumber/cucumber/wiki/Gherkin 
- 
- [^61]: 就算中文，也建议用UTF-8格式。
+

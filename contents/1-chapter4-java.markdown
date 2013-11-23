@@ -1,4 +1,5 @@
 # 如何写好Java程序 #
+
 写程序对每个软件开发者是个基本功，在企业中要考虑代码是给团队一起看的，因此质量的要求要更高一点。
 
 首先你要有想把代码写好的意识，否者再怎么说都没用。可以经常想想你的代码几年以后还容易读吗？
@@ -17,13 +18,14 @@
 
 在服务器端，Sonar是个非常好用的工具，它把需要的质量信息都归纳起来了。一个产品架设好以后，代码的质量就一目了然了。
 
-Insert 18333fig0401.png 
-图 4-1. Sonar
+![Sonar](img/18333fig0401-tn.png)
 
 ## 环境准备 ##
+
  * Eclipse IDE和相关的插件EcmEmma
 
 ## 代码风格和编程规范 ##
+
 编程规范（代码风格）不需要自己去创立，继承别人现有代码就可以了，建议用`checkstyle`工具强制控制一些基本的。
 
 下面列出一些常见的，不过重要的是理解，而不是事后检查。千万不要打印或制定厚厚的规范，没用的。可以翻翻[Java的编程规范][javacoding]，下面列出几个：
@@ -41,6 +43,7 @@ Insert 18333fig0401.png
   * 要记录所有的或是有疑问的操作的日志。
   
 ## 单元测试 ##
+
 这个应该是最简单的，但还是发现好多人都不做，要养成习惯，每个公共方法都需要至少有一个测试用例。
 
 单元测试是代码的一部分，要养成同时签入版本库的习惯。而且如果本地没有100%测试通过，也不允许提交代码。
@@ -50,8 +53,7 @@ Insert 18333fig0401.png
 ## 代码覆盖率 ##
 有了单元测试后，就可以来看看代码覆盖率，建议在Eclipse中安装[EclEmma][eclemma]，非常好用。
 
-Insert 18333fig0402.png 
-图 4-2. Eclipse插件EclEmma
+![Eclipse插件EclEmma](img/18333fig0402-tn.png)
 
 服务器端不用Sonar的话，cobertura不错。
 
@@ -60,8 +62,7 @@ Insert 18333fig0402.png
 
 不要把重构当成很复杂的东西，大多数是很简单的，在Eclipse中点几下就可以了。
 
-Insert 18333fig0403.png 
-图 4-3. Eclipse中使用Refactor
+![Eclipse中使用Refactor](img/18333fig0403-tn.png)
 
 最常见的重构有：
  
@@ -130,3 +131,4 @@ Mock一般都是通过接口（interface）来实现的，有很多Java工具来
  [eclemma]:    http://www.eclemma.org/
  
 [^41]:  Stackoverflow 上的对这些工具的比较 <http://stackoverflow.com/questions/4105592/comparison-between-mockito-vs-jmockit-why-is-mockito-voted-better-than-jmockit>
+
