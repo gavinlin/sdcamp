@@ -1,11 +1,11 @@
-# Learn Enterprise Agile Software Development #
+# Software Development Camp #
 
 [![Build Status](https://secure.travis-ci.org/larrycai/sdcamp.png)](http://travis-ci.org/larrycai/sdcamp)
 
 ## Introduction ##
 This is the source code for the Enterprise Agile Software Development book contents (Chinese). 
 
-You can always download the latest pdf book <https://github.com/downloads/larrycai/sdcamp/sdcamp.zh.community.book.pdf>
+?? You can always download the latest pdf book <https://github.com/downloads/larrycai/sdcamp/sdcamp.zh.community.book.pdf>
 
 It covers:
 

@@ -2,7 +2,9 @@
 
 As open source books, ebooks and pdf format should be created on fly, the following sections describe those solution in detail.
 
-The solution below is based on [Pro Git][progit]; while it is little updated on format inside. 
+ * contents/*.markdown : all source chapters
+ * template/template.tex : book style
+ * mmd2bok : script to generate latex from markdown and call `xelatex` to generate pdf
 
 ## Making Pdf books ##
 PDF format is used to read/print in nice way like real book, [MultiMarkdown](http://fletcherpenney.net/multimarkdown/) is good at this and it is used instead to generate latex from multimarkdown, and latex tool `xelatex` (is part of [TexLive][texlive] now) is used to convert pdf from latex.
