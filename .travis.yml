@@ -15,7 +15,9 @@ before_script:
 
 script:
   - pwd 
-  - cp ..
+  - cd ..
+  - echo $PATH
+  - which multimarkdown
   - ls -al
   - chmod +x mmd2bok
   - ./mmd2bok
