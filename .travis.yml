@@ -5,9 +5,7 @@ before_script:
   - git clone --recursive git://github.com/fletcher/peg-multimarkdown.git
   - cd peg-multimarkdown
   - make
-  - echo $PATH
   - export PATH=$PATH:`pwd`
-  - pwd
 # here you can check os environment, it is ubuntu natty  
   - uname -a
   - lsb_release -a
@@ -17,6 +15,7 @@ before_script:
 script:
   - pwd 
   - cd ..
+  - ls contents/img
   - echo $PATH
   - which multimarkdown
   - ls -al
