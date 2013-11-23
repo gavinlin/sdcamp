@@ -1,7 +1,9 @@
 before_script:
   - sudo apt-get install libglib2.0-dev
   - git clone --recursive git://github.com/fletcher/peg-multimarkdown.git
+  - cd peg-multimarkdown
   - make
+  - sudo make install
 # here you can check os environment, it is ubuntu natty  
   - uname -a
   - lsb_release -a
