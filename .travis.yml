@@ -4,7 +4,8 @@ before_script:
   - git clone --recursive git://github.com/fletcher/peg-multimarkdown.git
   - cd peg-multimarkdown
   - make
-  - ls
+  - echo $PATH
+  - export PATH=$PATH:`pwd`
   - pwd
 # here you can check os environment, it is ubuntu natty  
   - uname -a
@@ -14,6 +15,8 @@ before_script:
 
 script:
   - pwd 
+  - cp ..
+  - ls
   - chmod +x mmd2box
   - ./mmd2box
 
