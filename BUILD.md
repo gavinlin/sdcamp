@@ -19,15 +19,14 @@ Ubuntu Platform Precise (12.04) is used mainly and it is continuously verified b
 
 Though texlive 2011 can be installed separately, the default one texlive 2009 from Ubuntu repository is good enough so far. 
 
-  $ sudo apt-get install pandoc
-  $ sudo apt-get install texlive-xetex
-  $ sudo apt-get install texlive-latex-recommended # main packages
-  $ sudo apt-get install texlive-latex-extra # package titlesec
+    $ sudo apt-get install texlive-xetex
+    $ sudo apt-get install texlive-latex-recommended # main packages
+    $ sudo apt-get install texlive-latex-extra # package titlesec
 	
 You need to install related fonts for Chinese, fortunately they exist in ubuntu source also.
     
-  $ sudo apt-get install ttf-arphic-gbsn00lp ttf-arphic-ukai # from arphic 
-  $ sudo apt-get install ttf-wqy-microhei ttf-wqy-zenhei # from WenQuanYi
+    $ sudo apt-get install ttf-arphic-gbsn00lp ttf-arphic-ukai # from arphic 
+    $ sudo apt-get install ttf-wqy-microhei ttf-wqy-zenhei # from WenQuanYi
 
 Then it should work perfectly
 
