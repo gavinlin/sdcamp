@@ -15,8 +15,6 @@ Please check [ctax](http://www.ctan.org/) and [TexLive][texlive] for more backgr
 
 Ubuntu Platform Precise (12.04) is used mainly and it is continuously verified by travis-ci.org as well. 
 
-`multimarkdown` shall be compiled from git source.
-
 Though texlive 2011 can be installed separately, the default one texlive 2009 from Ubuntu repository is good enough so far. 
 
     $ sudo apt-get install texlive-xetex
@@ -27,6 +25,31 @@ You need to install related fonts for Chinese, fortunately they exist in ubuntu 
     
     $ sudo apt-get install ttf-arphic-gbsn00lp ttf-arphic-ukai # from arphic 
     $ sudo apt-get install ttf-wqy-microhei ttf-wqy-zenhei # from WenQuanYi
+
+
+### Fedora Platform ###
+
+Fedora 19 is verifed. 
+
+Though texlive 2011 can be installed separately, the default one texlive 2009 from Ubuntu repository is good enough so far. 
+
+    # yum install texlive-xetex
+    # yum install texlive-latex
+    # yum install texlive
+    # yum install texlive-xetex-def texlive-xltxtra texlive-tocbibind
+    # yum install texlive-euenc texlive-frame texlive-footnpag texlive-titlesec
+    # yum install texlive-appendix
+    
+You need to install related fonts for Chinese, fortunately they exist in ubuntu source also.
+    
+    $ sudo apt-get install ttf-arphic-gbsn00lp ttf-arphic-ukai # from arphic 
+    # yum install cjkuni-uming-fonts cjkuni-ukai-fonts
+    # yum install wqy-microhei-fonts wqy-zenhei-fonts # from WenQuanYi
+    
+
+### Generate PDF ###
+
+`multimarkdown` shall be compiled from git source.
 
 Then it should work perfectly
 
