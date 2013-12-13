@@ -3,16 +3,14 @@ sdcamp.*.mobi
 sdcamp.*.epub
 sdcamp.*.html
 sdcamp.*.markdown
+*.zip
 sdcamp-*.epub
 *.pdf
 !contents/img/cover.pdf
 !ebooks/cover.pdf
 *.swp
 latex/*
-!latex/makepdf
 !latex/README
-!latex/template.tex
-!latex/config.yml
 epub/temp
 *~
 .#*

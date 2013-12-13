@@ -6,7 +6,14 @@ cp -rf ../contents/img .
 multimarkdown -t latex meta.txt ../contents/0-preface*.markdown -o preface.tex
 multimarkdown -t latex meta.txt ../contents/1-chapter*.markdown -o chapters.tex
 multimarkdown -t latex meta.txt ../contents/2-appendix*.markdown -o appendix.tex
-cp template.tex sdcamp.tex
+if [ "X$OS" == "XWindows_NT" ]; then
+	echo "windows platform"
+	cp template-win.tex sdcamp.tex
+else
+	echo "unix platform"
+	cp template.tex sdcamp.tex
+fi
+#exit
 xelatex sdcamp.tex
 xelatex sdcamp.tex
 xelatex sdcamp.tex
