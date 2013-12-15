@@ -1,4 +1,4 @@
-#!/bin/bash
+!/bin/bash
 cd latex
 cp -rf ../template/* .
 cp -rf ../contents/img .
@@ -15,9 +15,6 @@ else
 fi
 #exit
 xelatex sdcamp.tex
-xelatex sdcamp.tex
-xelatex sdcamp.tex
+
 cp sdcamp.pdf ..
-echo
-echo
 echo "Done!"
